@@ -1,11 +1,7 @@
-# whoop-whoop-commute
-
-Whoop Whoop Commute
+# Whoop Whoop Commute
 
 ## Dependencies
 - Npm install
-- Docker (and docker-compose)
-- GNU Make (default installation on Mac works here, will come preinstalled on most distributions of Linux)
 
 ## Running the application
 

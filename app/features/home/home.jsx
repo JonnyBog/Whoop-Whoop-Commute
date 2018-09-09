@@ -22,7 +22,7 @@ export default function Home ({ data }) {
         width={[1, 1/1, 1/1]}
         py={gridGutterAll}
       >
-        <div>{data.data[0].title}</div>
+        <div>{data[0].title}</div>
       </GridItem>
     </HomeContainer>
   );
