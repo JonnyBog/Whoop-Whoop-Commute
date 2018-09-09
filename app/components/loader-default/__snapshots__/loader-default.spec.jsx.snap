@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components LoaderDefault Appearance should render 1`] = `
+<div>
+  loader default...
+</div>
+`;

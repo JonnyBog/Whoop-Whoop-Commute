@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server Markup should return content 1`] = `
+<SideEffectProvider(NullComponent)
+  store={Object {}}
+>
+  <ThemeProvider
+    theme={
+      Object {
+        "breakpoints": Array [
+          "600px",
+          "1024px",
+          "1600px",
+        ],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <StaticRouter
+        basename=""
+        context={Object {}}
+        location="test.com"
+      >
+        <Root />
+      </StaticRouter>
+    </Provider>
+  </ThemeProvider>
+</SideEffectProvider(NullComponent)>
+`;

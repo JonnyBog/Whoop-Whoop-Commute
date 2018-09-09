@@ -1,0 +1,26 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Front End App Packages
+node_modules/
+bower_components/
+npm-debug.log.*
+npm-debug.log
+
+# Compiled Development Assets
+bundle.js
+bundle.min.js
+static
+*.css.map
+*.js.map
+modernizr-custom.js
+
+# Editors/IDEs
+.idea
+.vscode

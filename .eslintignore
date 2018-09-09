@@ -1,0 +1,8 @@
+static/*
+app/**/*.fixture.js
+*.html
+tests/coverage
+enzyme.config.js
+test-reports/*
+server/*.ejs
+

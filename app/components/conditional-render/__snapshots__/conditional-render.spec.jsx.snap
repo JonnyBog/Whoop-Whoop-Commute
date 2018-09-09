@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components ConditionalRender Appearance should render a standard conditionalRender 1`] = `
+<div>
+  loader default...
+</div>
+`;

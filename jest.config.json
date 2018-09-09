@@ -1,0 +1,60 @@
+{
+  "verbose": true,
+  "bail": false,
+  "collectCoverageFrom": [
+    "app/**/*.{js,jsx}",
+    "server/**/*.{js,jsx}",
+    "!app/**/*.spec.{js,jsx}",
+    "!server/**/*.spec.{js,jsx}",
+    "!app/client.jsx",
+    "!app/combine-epics.js",
+    "!app/combine-reducers.js",
+    "!app/routes.js",
+    "!app/store.js",
+    "!app/base-styles.jsx",
+    "!**/node_modules/**",
+    "!app/**/*.fixtures.js",
+    "!**/static/**",
+    "!app/features/features.js",
+    "!server/server.jsx"
+  ],
+  "coverageDirectory": "<rootDir>/test-reports/unit-test-reports/coverage",
+  "coverageReporters": [
+    "cobertura",
+    "lcov",
+    "text"
+  ],
+  "reporters": [
+    "default",
+    ["jest-junit", {
+      "suiteName": "jest tests",
+      "output": "<rootDir>/test-reports/unit-tests/junit-report/junit.xml"
+    }]
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "functions": 80,
+      "lines": 80,
+      "statements": 80
+    }
+  },
+  "moduleNameMapper": {
+    "\\.(png|jpg|gif|ttf|woff|eot|svg)$": "<rootDir>app/mocks/global-mock.js"
+  },
+  "moduleDirectories": [
+    "node_modules"
+  ],
+  "modulePaths": [
+    "<rootDir>/app/",
+    "<rootDir>/server/",
+    "<rootDir>/app/lib",
+    "<rootDir>/app/components",
+    "<rootDir>/app/features"
+  ],
+  "setupFiles": [
+    "raf/polyfill",
+    "<rootDir>/node_modules/babel-polyfill/",
+    "<rootDir>/enzyme.config.js"
+  ]
+}
