@@ -24,3 +24,19 @@ modernizr-custom.js
 # Editors/IDEs
 .idea
 .vscode
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+integration-reports/
+**/screenshots/
+tests/coverage/
+test-reports/
+test-results/
+
