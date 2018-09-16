@@ -10,7 +10,9 @@ import LoaderOne from 'components/loader-one/loader-one';
  * @param {Object} props - react props
  * @returns {element} - JSX
  */
-function ConditionalRender ({ loader, storeItem, history, loaded }) {
+function ConditionalRender (
+  { loader, storeItem, history, loaded }
+) {
   /**
    * handleLoader - render the correct loader
    * @returns {Void} - void

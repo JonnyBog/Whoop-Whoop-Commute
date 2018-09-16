@@ -1,4 +1,3 @@
-import React from 'react';
 import loadable from 'loadable-components';
 
 export const PageNotFound = loadable(() => import(/* webpackChunkName: "page-not-found" */ 'components/page-not-found/page-not-found'));

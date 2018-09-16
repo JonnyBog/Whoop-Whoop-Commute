@@ -33,5 +33,5 @@ export const receiveHomeData = response => ({
  */
 export const failedHomeRequest = error => ({
   type: HOME_PAGE_FAILURE,
-  error: error
+  error
 });

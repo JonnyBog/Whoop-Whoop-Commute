@@ -2,30 +2,36 @@
   "env": {
     "app": {
       "presets": [
-        "env",
-        "react"
+        "@babel/preset-env",
+        "@babel/preset-react"
       ],
       "plugins": [
-        "transform-object-rest-spread",
-        "transform-class-properties",
-        ["babel-plugin-styled-components", {
-          "ssr": true,
-          "displayName": true
-        }],
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-class-properties",
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "displayName": true
+          }
+        ],
         "loadable-components/babel"
       ]
     },
     "test": {
       "presets": [
-        "env",
-        "react"
-        ],
+        "@babel/preset-env",
+        "@babel/preset-react"
+      ],
       "plugins": [
-        "transform-object-rest-spread",
-        "transform-class-properties",
-        ["babel-plugin-styled-components", {
-          "ssr": true
-        }],
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-class-properties",
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true
+          }
+        ],
         "loadable-components/babel",
         "dynamic-import-node"
       ]

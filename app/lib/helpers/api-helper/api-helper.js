@@ -6,7 +6,7 @@ export default {
    * @param {string} endpoint - the endpoint to request
    * @returns {Promise} - axios get
    */
-  get (endpoint, config = {}) {
+  get (endpoint) {
     return axios.get(endpoint);
   }
 };

@@ -54,7 +54,7 @@
   ],
   "setupFiles": [
     "raf/polyfill",
-    "<rootDir>/node_modules/babel-polyfill/",
+    "<rootDir>/node_modules/@babel/polyfill/",
     "<rootDir>/enzyme.config.js"
   ]
 }
