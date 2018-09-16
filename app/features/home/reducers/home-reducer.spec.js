@@ -25,19 +25,21 @@ describe('Features', () => {
     });
 
     it('should handle HOME_PAGE_SUCCESS', () => {
-      const data = {
-        title: 'test'
+      const response = {
+        data: {
+          title: 'test'
+        }
       };
-      const result = homeReducer({}, { type: HOME_PAGE_SUCCESS, data });
-      expect(result).toEqual({ isFetching: false, data });
+      const result = homeReducer({}, { type: HOME_PAGE_SUCCESS, response });
+      expect(result).toEqual({ isFetching: false, data: response.data });
     });
 
     it('should handle HOME_PAGE_FAILURE', () => {
-      const error = {
-        error: 'test'
+      const response = {
+        statusText: 'error'
       };
-      const result = homeReducer({}, { type: HOME_PAGE_FAILURE, error });
-      expect(result).toEqual({ isFetching: false, error });
+      const result = homeReducer({}, { type: HOME_PAGE_FAILURE, response });
+      expect(result).toEqual({ isFetching: false, error: response.statusText });
     });
   });
 });

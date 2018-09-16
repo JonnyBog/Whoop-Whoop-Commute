@@ -6,7 +6,7 @@ exports[`Features Home component should return content 1`] = `
     py={
       Array [
         "6px",
-        "6px",
+        "8px",
         "12px",
       ]
     }
@@ -18,22 +18,9 @@ exports[`Features Home component should return content 1`] = `
       ]
     }
   >
-    <home__ButtonStyled
-      copy="A Book"
-      to="/books/a-book"
-    />
-    <home__ButtonStyled
-      copy="My Second Book"
-      to="/books/my-second-book"
-    />
-    <home__ButtonStyled
-      copy="Thuggish Ruggish Bone"
-      to="/books/thuggish-ruggish-bone"
-    />
-    <home__ButtonStyled
-      copy="Tommy Wright III, Memphis Legend"
-      to="/books/tommy-wright-iii-memphis-legend"
-    />
+    <div>
+      test
+    </div>
   </GridItem>
 </home__HomeContainer>
 `;

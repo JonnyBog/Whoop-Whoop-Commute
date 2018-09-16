@@ -38,7 +38,7 @@ describe('Features', () => {
         expect(store.getActions())
           .toEqual(expect.arrayContaining([{
             type: 'HOME_PAGE_SUCCESS',
-            data: fixture.response
+            response: fixture.response
           }]));
       });
     });
@@ -48,12 +48,14 @@ describe('Features', () => {
         const store = mockStore({});
 
         store.dispatch(failedHomeRequest({
-          response: 'Something went wrong'
+          statusText: 'Something went wrong'
         }));
         expect(store.getActions())
           .toEqual(expect.arrayContaining([{
             type: 'HOME_PAGE_FAILURE',
-            error: 'Something went wrong'
+            response: {
+              statusText: 'Something went wrong'
+            }
           }]));
       });
     });

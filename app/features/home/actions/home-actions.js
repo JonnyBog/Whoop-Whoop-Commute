@@ -19,19 +19,19 @@ export const requestHomeData = () => ({
 /**
  * receiveHomeData
  * @param {Object} response API response
- * @returns {{type: String, data: Object}} type and data
+ * @returns {{type: String, data: Object}} type and response
  */
 export const receiveHomeData = response => ({
   type: HOME_PAGE_SUCCESS,
-  data: response
+  response
 });
 
 /**
  * failedHomeRequest
- * @param {Object} error API error
- * @returns {{type: String, error: Object}} type and error
+ * @param {Object} response API response
+ * @returns {{type: String, response: Object}} type and response
  */
-export const failedHomeRequest = error => ({
+export const failedHomeRequest = response => ({
   type: HOME_PAGE_FAILURE,
-  error
+  response
 });

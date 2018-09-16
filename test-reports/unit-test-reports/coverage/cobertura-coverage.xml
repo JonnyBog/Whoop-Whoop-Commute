@@ -1,0 +1,451 @@
+<?xml version="1.0" ?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage lines-valid="74" lines-covered="69" line-rate="0.9323999999999999" branches-valid="30" branches-covered="28" branch-rate="0.9333" timestamp="1537111667999" complexity="0" version="0.1">
+  <sources>
+    <source>/Users/jonathanboggon/Documents/sites.nosync/whoop-whoop-commute</source>
+  </sources>
+  <packages>
+    <package name="app.components.conditional-render" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="conditional-render.jsx" filename="app/components/conditional-render/conditional-render.jsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="ConditionalRender" hits="5" signature="()V">
+              <lines>
+                <line number="13" hits="5"/>
+              </lines>
+            </method>
+            <method name="handleLoader" hits="3" signature="()V">
+              <lines>
+                <line number="20" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="21" hits="3" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="23" hits="1" branch="false"/>
+            <line number="25" hits="2" branch="false"/>
+            <line number="29" hits="5" branch="false"/>
+            <line number="38" hits="2" branch="false"/>
+            <line number="51" hits="2" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.components.loader-default" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="loader-default.jsx" filename="app/components/loader-default/loader-default.jsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="LoaderDefault" hits="2" signature="()V">
+              <lines>
+                <line number="7" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="2" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.components.loader-one" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="loader-one.jsx" filename="app/components/loader-one/loader-one.jsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="LoaderOne" hits="2" signature="()V">
+              <lines>
+                <line number="7" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="2" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.components.page-not-found" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="page-not-found.jsx" filename="app/components/page-not-found/page-not-found.jsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="PageNotFound" hits="1" signature="()V">
+              <lines>
+                <line number="8" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.features.home" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="home-container.jsx" filename="app/features/home/home-container.jsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="1" signature="()V">
+              <lines>
+                <line number="29" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="5" signature="()V">
+              <lines>
+                <line number="37" hits="5"/>
+              </lines>
+            </method>
+            <method name="(anonymous_2)" hits="5" signature="()V">
+              <lines>
+                <line number="47" hits="5"/>
+              </lines>
+            </method>
+            <method name="(anonymous_3)" hits="1" signature="()V">
+              <lines>
+                <line number="52" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="30" hits="1" branch="false"/>
+            <line number="38" hits="5" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="39" hits="2" branch="false"/>
+            <line number="48" hits="5" branch="false"/>
+            <line number="53" hits="1" branch="false"/>
+            <line number="62" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="home.jsx" filename="app/features/home/home.jsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="Home" hits="1" signature="()V">
+              <lines>
+                <line number="19" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="2" branch="false"/>
+            <line number="20" hits="1" branch="false"/>
+            <line number="32" hits="2" branch="false"/>
+            <line number="36" hits="2" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.features.home.actions" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="home-actions.fixture.js" filename="app/features/home/actions/home-actions.fixture.js" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="home-actions.js" filename="app/features/home/actions/home-actions.js" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="2" signature="()V">
+              <lines>
+                <line number="9" hits="2"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="2" signature="()V">
+              <lines>
+                <line number="24" hits="2"/>
+              </lines>
+            </method>
+            <method name="(anonymous_2)" hits="2" signature="()V">
+              <lines>
+                <line number="34" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="4" branch="false"/>
+            <line number="2" hits="4" branch="false"/>
+            <line number="3" hits="4" branch="false"/>
+            <line number="9" hits="4" branch="false"/>
+            <line number="24" hits="4" branch="false"/>
+            <line number="34" hits="4" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.features.home.epics" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="home-epic.js" filename="app/features/home/epics/home-epic.js" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="fetchHomeData" hits="2" signature="()V">
+              <lines>
+                <line number="18" hits="2"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="2" signature="()V">
+              <lines>
+                <line number="20" hits="2"/>
+              </lines>
+            </method>
+            <method name="(anonymous_2)" hits="1" signature="()V">
+              <lines>
+                <line number="22" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_3)" hits="1" signature="()V">
+              <lines>
+                <line number="23" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="2" branch="false"/>
+            <line number="21" hits="2" branch="false"/>
+            <line number="22" hits="1" branch="false"/>
+            <line number="23" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.features.home.reducers" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="home-reducer.js" filename="app/features/home/reducers/home-reducer.js" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="4" signature="()V">
+              <lines>
+                <line number="18" hits="4"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="1" branch="false"/>
+            <line number="19" hits="4" branch="true" condition-coverage="100% (4/4)"/>
+            <line number="21" hits="1" branch="false"/>
+            <line number="25" hits="1" branch="false"/>
+            <line number="30" hits="1" branch="false"/>
+            <line number="35" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.features.root" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="root-container.js" filename="app/features/root/root-container.js" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="7" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="root.jsx" filename="app/features/root/root.jsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="Root" hits="1" signature="()V">
+              <lines>
+                <line number="12" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.lib" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="lib.js" filename="app/lib/lib.js" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.lib.helpers.api-helper" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="api-helper.js" filename="app/lib/helpers/api-helper/api-helper.js" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="10" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.lib.helpers.connect-to-store-helper" line-rate="0.6667000000000001" branch-rate="1">
+      <classes>
+        <class name="connect-to-store-helper.js" filename="app/lib/helpers/connect-to-store-helper/connect-to-store-helper.js" line-rate="0.6667000000000001" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="3" signature="()V">
+              <lines>
+                <line number="4" hits="3"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="0" signature="()V">
+              <lines>
+                <line number="4" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_2)" hits="0" signature="()V">
+              <lines>
+                <line number="4" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_3)" hits="3" signature="()V">
+              <lines>
+                <line number="10" hits="3"/>
+              </lines>
+            </method>
+            <method name="(anonymous_4)" hits="0" signature="()V">
+              <lines>
+                <line number="10" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_5)" hits="3" signature="()V">
+              <lines>
+                <line number="12" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="4" hits="6" branch="false"/>
+            <line number="5" hits="0" branch="false"/>
+            <line number="7" hits="0" branch="false"/>
+            <line number="10" hits="6" branch="false"/>
+            <line number="12" hits="6" branch="false"/>
+            <line number="13" hits="3" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.lib.helpers.environments-helper" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="environments-helper.js" filename="app/lib/helpers/environments-helper/environments-helper.js" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.lib.middleware.observable-to-promise-middleware" line-rate="0.7857" branch-rate="0.8332999999999999">
+      <classes>
+        <class name="observable-to-promise-middleware.js" filename="app/lib/middleware/observable-to-promise-middleware/observable-to-promise-middleware.js" line-rate="0.7857" branch-rate="0.8332999999999999">
+          <methods>
+            <method name="(anonymous_0)" hits="3" signature="()V">
+              <lines>
+                <line number="6" hits="3"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="3" signature="()V">
+              <lines>
+                <line number="6" hits="3"/>
+              </lines>
+            </method>
+            <method name="(anonymous_2)" hits="3" signature="()V">
+              <lines>
+                <line number="9" hits="3"/>
+              </lines>
+            </method>
+            <method name="(anonymous_3)" hits="2" signature="()V">
+              <lines>
+                <line number="13" hits="2"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="6" hits="6" branch="false"/>
+            <line number="7" hits="3" branch="false"/>
+            <line number="9" hits="3" branch="false"/>
+            <line number="10" hits="3" branch="false"/>
+            <line number="12" hits="3" branch="true" condition-coverage="100% (4/4)"/>
+            <line number="13" hits="2" branch="false"/>
+            <line number="14" hits="2" branch="false"/>
+            <line number="15" hits="2" branch="false"/>
+            <line number="17" hits="2" branch="false"/>
+            <line number="20" hits="3" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="21" hits="0" branch="false"/>
+            <line number="22" hits="0" branch="false"/>
+            <line number="23" hits="0" branch="false"/>
+            <line number="26" hits="3" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="app.mocks" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="global-mock.js" filename="app/mocks/global-mock.js" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="server.server-development-options" line-rate="1" branch-rate="0.5">
+      <classes>
+        <class name="server-development-options.js" filename="server/server-development-options/server-development-options.js" line-rate="1" branch-rate="0.5">
+          <methods>
+            <method name="serverDevelopmentOptions" hits="1" signature="()V">
+              <lines>
+                <line number="12" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="0" signature="()V">
+              <lines>
+                <line number="18" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="1" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="16" hits="1" branch="false"/>
+            <line number="17" hits="1" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="1" branch="false"/>
+            <line number="22" hits="1" branch="false"/>
+            <line number="24" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="server.server-markup" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="server-markup.jsx" filename="server/server-markup/server-markup.jsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="ServerMarkup" hits="1" signature="()V">
+              <lines>
+                <line number="17" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="1" branch="false"/>
+            <line number="20" hits="1" branch="false"/>
+            <line number="37" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="server.server-routes" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="server-routes.js" filename="server/server-routes/server-routes.js" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="serverRoutes" hits="3" signature="()V">
+              <lines>
+                <line number="13" hits="3"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="3" signature="()V">
+              <lines>
+                <line number="14" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="3" branch="false"/>
+            <line number="15" hits="3" branch="false"/>
+            <line number="22" hits="3" branch="false"/>
+            <line number="24" hits="3" branch="true" condition-coverage="100% (2/2)"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

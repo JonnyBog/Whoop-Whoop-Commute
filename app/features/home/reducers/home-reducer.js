@@ -24,12 +24,12 @@ export default function (state = defaultState, action) {
     case HOME_PAGE_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        data: action.data.data
+        data: action.response.data
       });
     case HOME_PAGE_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        error: action.statusText
+        error: action.response.statusText
       });
     default:
       return state;

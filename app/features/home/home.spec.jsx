@@ -13,9 +13,11 @@ describe('Features', () => {
 
     beforeEach(() => {
       props = {
-        data: {
-          title: 'test'
-        }
+        data: [
+          {
+            title: 'test'
+          }
+        ]
       };
     });
 

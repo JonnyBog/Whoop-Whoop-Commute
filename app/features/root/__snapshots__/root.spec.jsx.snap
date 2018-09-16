@@ -2,60 +2,18 @@
 
 exports[`Features Root component Appearance should render correctly 1`] = `
 <React.Fragment>
-  <Connect(NavigationContainer) />
-  <root__NonNavigationContainer>
+  <Switch>
     <Switch>
-      <Switch>
-        <Route
-          exact={true}
-          path="/"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/search"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/liked"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/films"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/music"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/books"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/tv"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/books/:slug"
-          render={[Function]}
-        />
-        <Route
-          path="/page-not-found"
-          render={[Function]}
-        />
-        <Route
-          path="*"
-          render={[Function]}
-        />
-      </Switch>
+      <Route
+        exact={true}
+        path="/"
+        render={[Function]}
+      />
+      <Route
+        path="*"
+        render={[Function]}
+      />
     </Switch>
-  </root__NonNavigationContainer>
+  </Switch>
 </React.Fragment>
 `;
