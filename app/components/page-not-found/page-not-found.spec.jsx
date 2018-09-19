@@ -22,7 +22,7 @@ describe('Components', () => {
     }
 
     describe('Appearance', () => {
-      it('should render copy', () => {
+      it('should render', () => {
         const wrapper = createShallowWrapper();
         expect(wrapper).toMatchSnapshot();
       });

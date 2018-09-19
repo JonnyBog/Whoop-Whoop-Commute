@@ -18,7 +18,7 @@ import {
 export default function fetchHomeData (action$, store, { apiHelper }) {
   return action$.ofType(HOME_PAGE_REQUEST)
     .switchMap(() =>
-      Observable.fromPromise(apiHelper.get('https://jsonplaceholder.typicode.com/posts'))
+      Observable.fromPromise(apiHelper.get('https://api.tfl.gov.uk/AirQuality'))
         .map(response => receiveHomeData(response))
         .catch(error => Observable.of(failedHomeRequest(error)))
     );

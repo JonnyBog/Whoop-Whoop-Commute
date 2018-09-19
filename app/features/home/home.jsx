@@ -8,6 +8,8 @@ import {
   gridGutterAll
 } from 'base-styles';
 
+import { CommuteForm } from 'features';
+
 const HomeContainer = styled(GridContainer)`
   padding-top: 80px;
 `;
@@ -23,11 +25,14 @@ export default function Home ({ data }) {
         width={[1, 1/1, 1/1]}
         py={gridGutterAll}
       >
-        <div>{data[0].title}</div>
+        {data.currentForecast[0].forecastText}
+        <CommuteForm />
       </GridItem>
     </HomeContainer>
   );
 }
+
+// https://api.tfl.gov.uk/StopPoint?stopTypes=NaptanMetroStation,NaptanRailStation&radius=1600&lat=51.472184&lon=-0.122644
 
 Home.propTypes = {
   data: PropTypes.shape()
