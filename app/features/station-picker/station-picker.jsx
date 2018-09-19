@@ -6,12 +6,16 @@ import styled from 'styled-components';
  * Station Picker
  * @returns {element} JSX
  */
-export default function StationPicker ({ requestStationPickerData, data }) {
+export default function StationPicker ({ requestStationPickerData, data, value, name, test }) {
+  console.log(test);
   return (
     <Fragment>
       <input
         list="station-picker"
-        onKeyUp={e => requestStationPickerData(e.target.value)}
+        // onKeyUp={e => requestStationPickerData(e.target.value)}
+        onKeyUp={test}
+        name={name}
+        value={value}
       />
       {
         data && data.matches &&

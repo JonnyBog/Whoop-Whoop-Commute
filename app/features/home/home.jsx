@@ -32,8 +32,6 @@ export default function Home ({ data }) {
   );
 }
 
-// https://api.tfl.gov.uk/StopPoint?stopTypes=NaptanMetroStation,NaptanRailStation&radius=1600&lat=51.472184&lon=-0.122644
-
 Home.propTypes = {
   data: PropTypes.shape()
 };
