@@ -28,6 +28,13 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
           workStation: Yup.string()
             .required('Required')
         })}
+        onSubmit={values => {
+          requestCommuteFormData({
+            mileRadius: Math.round(values.mileRadius * 1609.34),
+            lat: values.lat,
+            lng: values.lng
+          });
+        }}
       >
         {props => {
           const {
@@ -72,8 +79,6 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
     </Fragment>
   );
 }
-
-// https://api.tfl.gov.uk/StopPoint?stopTypes=NaptanMetroStation,NaptanRailStation&radius=1600&lat=51.472184&lon=-0.122644
 
 CommuteForm.propTypes = {
   requestCommuteFormData: PropTypes.func.isRequired,

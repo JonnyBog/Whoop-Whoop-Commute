@@ -4,12 +4,13 @@ export const COMMUTE_FORM_FAILURE = 'COMMUTE_FORM_FAILURE';
 
 /**
  * requestCommuteFormData
- * @param {String} targetValue input target value
  * @return {Object} type
  */
-export const requestCommuteFormData = targetValue => ({
+export const requestCommuteFormData = ({ mileRadius, lat, lng }) => ({
   type: COMMUTE_FORM_REQUEST,
-  targetValue
+  mileRadius,
+  lat,
+  lng
 });
 
 /**
