@@ -5,24 +5,23 @@ import Proptypes from 'prop-types';
  * Renders MilesPicker component
  * @returns {JSX} react jsx
  */
-export default function MilesPicker ({ options, label }) {
-  const metersInMile = 1609.34;
-
+export default function MilesPicker ({ maxMiles, label, id, error, value, onChange }) {
   return (
     <Fragment>
       <div>{label}</div>
-      <select>
-        {
-          options.map(option => (
-            <option value={option * metersInMile} key={option}>{option}</option>
-          ))
-        }
-      </select>
+      <input
+        id={id}
+        type="range"
+        min="1"
+        max={maxMiles}
+        value={value}
+        onChange={onChange}
+      />
     </Fragment>
   );
 }
 
 MilesPicker.propTypes = {
-  options: Proptypes.arrayOf(Proptypes.number).isRequired,
+  maxMiles: Proptypes.number.isRequired,
   label: Proptypes.string.isRequired
 };

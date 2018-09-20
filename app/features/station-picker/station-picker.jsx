@@ -11,12 +11,14 @@ export default function StationPicker ({ data, requestStationPickerData, id, err
     <Fragment>
       <input
         id={id}
+        list={`${id}-list`}
         value={value}
         onChange={onChange}
+        onKeyUp={e => requestStationPickerData(e.target.value)}
       />
       {
         data && data.matches &&
-          <datalist id="station-picker">
+          <datalist id={`${id}-list`}>
             {
               data.matches.map(match => (
                 <option value={match.name} key={match.name} />

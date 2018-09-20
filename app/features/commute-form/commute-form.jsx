@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 
 import { StationPicker } from 'features';
 import MilesPicker from 'components/miles-picker/miles-picker';
+import LocationPicker from 'components/location-picker/location-picker';
 
 /**
  * Commute Form
@@ -15,9 +16,16 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
   return (
     <Fragment>
       <Formik
-        initialValues={{ homeStation: '' }}
+        initialValues={
+          {
+            workStation: '',
+            mileRadius: 1,
+            lat: 51.5081,
+            lng: -0.1249
+          }
+        }
         validationSchema={Yup.object().shape({
-          homeStation: Yup.string()
+          workStation: Yup.string()
             .required('Required')
         })}
       >
@@ -34,10 +42,25 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
 
           return (
             <form onSubmit={handleSubmit}>
-              <StationPicker id="homeStation" value={values.homeStation} onChange={handleChange} />
+              <StationPicker
+                id="workStation"
+                value={values.workStation}
+                onChange={handleChange}
+              />
               <MilesPicker
-                options={[0, 1, 2, 3, 4, 5]}
+                id="mileRadius"
+                value={values.mileRadius}
+                onChange={handleChange}
+                maxMiles={4}
                 label="Please select radius in miles"
+              />
+              <LocationPicker
+                value={{
+                  lat: values.lat,
+                  lng: values.lng
+                }}
+                onChange={handleChange}
+                radius={values.mileRadius}
               />
               <button type="submit" disabled={isSubmitting}>
                 Submit
