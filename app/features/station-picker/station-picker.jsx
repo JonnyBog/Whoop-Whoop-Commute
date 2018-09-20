@@ -6,16 +6,13 @@ import styled from 'styled-components';
  * Station Picker
  * @returns {element} JSX
  */
-export default function StationPicker ({ requestStationPickerData, data, value, name, test }) {
-  console.log(test);
+export default function StationPicker ({ data, requestStationPickerData, id, error, value, onChange }) {
   return (
     <Fragment>
       <input
-        list="station-picker"
-        // onKeyUp={e => requestStationPickerData(e.target.value)}
-        onKeyUp={test}
-        name={name}
+        id={id}
         value={value}
+        onChange={onChange}
       />
       {
         data && data.matches &&
@@ -30,12 +27,3 @@ export default function StationPicker ({ requestStationPickerData, data, value, 
     </Fragment>
   );
 }
-
-StationPicker.propTypes = {
-  requestStationPickerData: PropTypes.func.isRequired,
-  data: PropTypes.shape()
-};
-
-StationPicker.defaultProps = {
-  data: {}
-};

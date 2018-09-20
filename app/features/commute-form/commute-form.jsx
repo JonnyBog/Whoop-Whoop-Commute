@@ -15,7 +15,7 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
   return (
     <Fragment>
       <Formik
-        initialValues={{ homeStation: '', email: '' }}
+        initialValues={{ homeStation: '' }}
         validationSchema={Yup.object().shape({
           homeStation: Yup.string()
             .required('Required')
@@ -31,30 +31,13 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
             handleBlur,
             handleSubmit
           } = props;
+
           return (
             <form onSubmit={handleSubmit}>
-              {/*
-              <input
-                id="email"
-                placeholder="Enter your email"
-                type="text"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              {errors.email &&
-                touched.email && <div className="input-feedback">{errors.email}</div>} */}
-              <StationPicker name="homeStation" value={values.homeStation} test={handleChange} />
-              <input
-                id="email"
-                placeholder="Enter your email"
-                type="text"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={
-                  errors.email && touched.email ? 'text-input error' : 'text-input'
-                }
+              <StationPicker id="homeStation" value={values.homeStation} onChange={handleChange} />
+              <MilesPicker
+                options={[0, 1, 2, 3, 4, 5]}
+                label="Please select radius in miles"
               />
               <button type="submit" disabled={isSubmitting}>
                 Submit
@@ -63,11 +46,6 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
           );
         }}
       </Formik>
-      <MilesPicker
-        options={[0, 1, 2, 3, 4, 5]}
-        label="Please select radius in miles"
-      />
-      <StationPicker />
     </Fragment>
   );
 }

@@ -10,6 +10,7 @@ const StationPickerContainer = props => (
   <StationPicker
     data={props.stationPicker.data}
     requestStationPickerData={props.requestStationPickerData}
+    {...props}
   />
 );
 
