@@ -20,8 +20,14 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
     .switchMap(action =>
       Observable.fromPromise(apiHelper.get(
         `https://api.tfl.gov.uk/StopPoint?stopTypes=NaptanMetroStation,NaptanRailStation&radius=${action.mileRadius}&lat=${action.lat}&lon=${action.lng}`
-      ))
-        .map(response => receiveCommuteFormData(response))
-        .catch(error => Observable.of(failedCommuteFormRequest(error)))
-    );
+      )),
+    (action, response) => ([response, action]))
+    .switchMap(
+      ([response, action]) =>
+        Observable.fromPromise(apiHelper.get(
+          `https://api.tfl.gov.uk/Journey/JourneyResults/${action.workStation.icsCode}/to/${response.data.stopPoints[0].icsCode}`
+        ))
+    )
+    .map(response => receiveCommuteFormData(response))
+    .catch(error => Observable.of(failedCommuteFormRequest(error)));
 }

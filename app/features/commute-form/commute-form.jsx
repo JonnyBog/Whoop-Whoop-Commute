@@ -25,11 +25,14 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
           }
         }
         validationSchema={Yup.object().shape({
-          workStation: Yup.string()
+          lat: Yup.string()
+            .required('Required'),
+          lng: Yup.string()
             .required('Required')
         })}
         onSubmit={values => {
           requestCommuteFormData({
+            workStation: values.workStation,
             mileRadius: Math.round(values.mileRadius * 1609.34),
             lat: values.lat,
             lng: values.lng
