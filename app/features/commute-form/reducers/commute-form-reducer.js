@@ -24,7 +24,7 @@ export default function (state = defaultState, action) {
     case COMMUTE_FORM_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        data: action.response.data
+        data: action.response
       });
     case COMMUTE_FORM_FAILURE:
       return Object.assign({}, state, {

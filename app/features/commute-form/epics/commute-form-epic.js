@@ -24,10 +24,24 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
     (action, response) => ([response, action]))
     .switchMap(
       ([response, action]) =>
-        Observable.fromPromise(apiHelper.get(
-          `https://api.tfl.gov.uk/Journey/JourneyResults/${action.workStationIcsId}/to/${response.data.stopPoints[0].icsCode}`
-        ))
+        Observable.forkJoin(
+          response.data.stopPoints.map(stopPoint =>
+            Observable.fromPromise(
+              apiHelper.get(
+                `https://api.tfl.gov.uk/Journey/JourneyResults/${action.workStationIcsId}/to/${stopPoint.icsCode}`
+              )
+            )
+          )
+        )
     )
-    .map(response => receiveCommuteFormData(response))
+    .map(responses => {
+      const responseData = [];
+
+      responses.forEach(response => {
+        responseData.push(response.data);
+      });
+
+      return receiveCommuteFormData(responseData);
+    })
     .catch(error => Observable.of(failedCommuteFormRequest(error)));
 }

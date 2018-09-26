@@ -29,10 +29,17 @@ export default class StationPicker extends Component {
     if (this.stationPickerInput.list && this.stationPickerInput.list.options.length === 1) {
       this.setState({
         icsid: this.stationPickerInput.list.options[0].dataset.icsid
-      });
+      },
+      () => {
+        this.stationPickerHiddenInput.click();
+      }
+      );
     } else {
       this.setState({
         icsid: ''
+      },
+      () => {
+        this.stationPickerHiddenInput.click();
       });
     }
   }
@@ -57,6 +64,9 @@ export default class StationPicker extends Component {
           id={`${this.props.id}IcsId`}
           value={this.state.icsid}
           onChange={this.props.onChange}
+          onClick={this.props.onChange}
+          ref={input => this.stationPickerHiddenInput = input}
+          type="hidden"
         />
         {
           this.props.data && this.props.data.matches &&

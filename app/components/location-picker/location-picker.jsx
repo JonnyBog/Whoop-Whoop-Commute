@@ -36,7 +36,7 @@ export default class LocationPicker extends Component {
       <Fragment>
         <ReactLocationPicker
           containerElement={<div style={{ height: '100%' }} />}
-          mapElement={<div style={{ height: '0px' }} />}
+          mapElement={<div style={{ height: '400px' }} />}
           defaultPosition={this.state.defaultPosition}
           onChange={this.handleChange}
           radius={this.props.radius * 1609.34}
