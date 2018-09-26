@@ -14,14 +14,14 @@ export default class LocationPicker extends Component {
       position: props.value
     };
 
-    this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   /**
-   * handleLocationChange
+   * handleChange
    * @returns {Void} - void
    */
-  handleLocationChange ({ position }) {
+  handleChange ({ position }) {
     this.setState({ position });
     this.latInput.click();
     this.lngInput.click();
@@ -36,9 +36,9 @@ export default class LocationPicker extends Component {
       <Fragment>
         <ReactLocationPicker
           containerElement={<div style={{ height: '100%' }} />}
-          mapElement={<div style={{ height: '400px' }} />}
+          mapElement={<div style={{ height: '0px' }} />}
           defaultPosition={this.state.defaultPosition}
-          onChange={this.handleLocationChange}
+          onChange={this.handleChange}
           radius={this.props.radius * 1609.34}
           zoom={11}
         />

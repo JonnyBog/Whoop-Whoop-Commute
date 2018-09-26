@@ -140,12 +140,6 @@ export const appStyles = () => injectGlobal`
     font-family: ${fonts.primary};
   }
 
-  .navigation-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-  }
-
   a {
     text-decoration: none;
   }

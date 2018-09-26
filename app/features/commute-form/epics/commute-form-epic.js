@@ -25,7 +25,7 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
     .switchMap(
       ([response, action]) =>
         Observable.fromPromise(apiHelper.get(
-          `https://api.tfl.gov.uk/Journey/JourneyResults/${action.workStation.icsCode}/to/${response.data.stopPoints[0].icsCode}`
+          `https://api.tfl.gov.uk/Journey/JourneyResults/${action.workStationIcsId}/to/${response.data.stopPoints[0].icsCode}`
         ))
     )
     .map(response => receiveCommuteFormData(response))

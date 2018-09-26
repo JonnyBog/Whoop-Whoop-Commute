@@ -18,7 +18,8 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
       <Formik
         initialValues={
           {
-            workStation: '',
+            workStationName: '',
+            workStationIcsId: '',
             mileRadius: 1,
             lat: 51.5081,
             lng: -0.1249
@@ -32,7 +33,7 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
         })}
         onSubmit={values => {
           requestCommuteFormData({
-            workStation: values.workStation,
+            workStationIcsId: values.workStationIcsId,
             mileRadius: Math.round(values.mileRadius * 1609.34),
             lat: values.lat,
             lng: values.lng
@@ -54,7 +55,7 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
             <form onSubmit={handleSubmit}>
               <StationPicker
                 id="workStation"
-                value={values.workStation}
+                value={values.workStationName}
                 onChange={handleChange}
               />
               <MilesPicker

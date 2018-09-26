@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -6,26 +6,69 @@ import styled from 'styled-components';
  * Station Picker
  * @returns {element} JSX
  */
-export default function StationPicker ({ data, requestStationPickerData, id, error, value, onChange }) {
-  return (
-    <Fragment>
-      <input
-        id={id}
-        list={`${id}-list`}
-        value={value}
-        onChange={onChange}
-        onKeyUp={e => requestStationPickerData(e.target.value)}
-      />
-      {
-        data && data.matches &&
-          <datalist id={`${id}-list`}>
-            {
-              data.matches.map(match => (
-                <option value={match.name} key={match.name} />
-              ))
-            }
-          </datalist>
-      }
-    </Fragment>
-  );
+export default class StationPicker extends Component {
+  /**
+   * constructor
+   * @param {Object} props - react props
+   */
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      icsid: ''
+    };
+
+    this.handleBlur = this.handleBlur.bind(this);
+  }
+
+  /**
+   * handleBlur
+   * @returns {Void} - void
+   */
+  handleBlur () {
+    if (this.stationPickerInput.list && this.stationPickerInput.list.options.length === 1) {
+      this.setState({
+        icsid: this.stationPickerInput.list.options[0].dataset.icsid
+      });
+    } else {
+      this.setState({
+        icsid: ''
+      });
+    }
+  }
+
+  /**
+   * react render
+   * @returns {JSX} - JSX
+   */
+  render () {
+    return (
+      <Fragment>
+        <input
+          id={`${this.props.id}Name`}
+          list={`${this.props.id}-list`}
+          value={this.props.value}
+          onBlur={this.handleBlur}
+          onChange={this.props.onChange}
+          onKeyUp={e => this.props.requestStationPickerData(e.target.value)}
+          ref={input => this.stationPickerInput = input}
+        />
+        <input
+          id={`${this.props.id}IcsId`}
+          value={this.state.icsid}
+          onChange={this.props.onChange}
+        />
+        {
+          this.props.data && this.props.data.matches &&
+            <datalist id={`${this.props.id}-list`}>
+              {
+                this.props.data.matches.map(match => (
+                  <option value={match.name} key={match.name} data-icsid={match.icsId} />
+                ))
+              }
+            </datalist>
+        }
+      </Fragment>
+    );
+  }
 }
