@@ -62,7 +62,7 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
                 id="mileRadius"
                 value={values.mileRadius}
                 onChange={handleChange}
-                maxMiles={4}
+                maxMiles={2}
                 label="Please select radius in miles"
               />
               <LocationPicker
@@ -80,6 +80,20 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
           );
         }}
       </Formik>
+      {
+        data &&
+          <Fragment>
+            <h2>Results:</h2>
+            {
+              data.map(journey => (
+                <Fragment>
+                  <p>station: {journey.legs[0].departurePoint.commonName}</p>
+                  <p>duration: {journey.duration}</p>
+                </Fragment>
+              ))
+            }
+          </Fragment>
+      }
     </Fragment>
   );
 }

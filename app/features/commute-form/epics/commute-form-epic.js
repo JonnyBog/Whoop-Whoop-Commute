@@ -28,7 +28,7 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
           response.data.stopPoints.map(stopPoint =>
             Observable.fromPromise(
               apiHelper.get(
-                `https://api.tfl.gov.uk/Journey/JourneyResults/${action.workStationIcsId}/to/${stopPoint.icsCode}`
+                `https://api.tfl.gov.uk/Journey/JourneyResults/${stopPoint.icsCode}/to/${action.workStationIcsId}&time=0900`
               )
             )
           )
@@ -37,8 +37,8 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
     .map(responses => {
       const responseData = [];
 
-      responses.forEach(response => {
-        responseData.push(response.data);
+      responses.map(response => {
+        responseData.push(response.data.journeys[0]);
       });
 
       return receiveCommuteFormData(responseData);
