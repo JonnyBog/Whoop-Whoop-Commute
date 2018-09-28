@@ -69,6 +69,9 @@ export default class StationPicker extends Component {
           type="hidden"
         />
         {
+          this.props.error && <p>{this.props.error}</p>
+        }
+        {
           this.props.data && this.props.data.matches &&
             <datalist id={`${this.props.id}-list`}>
               {

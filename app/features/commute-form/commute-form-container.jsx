@@ -8,6 +8,7 @@ import CommuteForm from 'features/commute-form/commute-form';
 
 const CommuteFormContainer = props => (
   <CommuteForm
+    isFetching={props.commuteForm.isFetching}
     data={props.commuteForm.data}
     error={props.commuteForm.error}
     requestCommuteFormData={props.requestCommuteFormData}

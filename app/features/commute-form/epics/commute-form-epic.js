@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import {
   COMMUTE_FORM_REQUEST,
   receiveCommuteFormData,
-  networkErrorCommuteFormRequest,
   failedCommuteFormRequest
 } from 'features/commute-form/actions/commute-form-actions';
 /**
@@ -24,16 +23,23 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
       )),
     (action, response) => ([response, action]))
     .switchMap(
-      ([response, action]) =>
-        Observable.forkJoin(
-          response.data.stopPoints.map(stopPoint =>
-            Observable.fromPromise(
-              apiHelper.get(
-                `https://api.tfl.gov.uk/Journey/JourneyResults/${stopPoint.icsCode}/to/${action.workStationIcsId}&time=0900`
+      ([response, action]) => {
+        if (!response.data.stopPoints.length) {
+          throw new Error('There are no stations in this area.');
+        }
+
+        return Observable.forkJoin(
+          response.data.stopPoints
+            .filter(stopPoint => stopPoint.icsCode !== action.workStationIcsId)
+            .map(stopPoint =>
+              Observable.fromPromise(
+                apiHelper.get(
+                  `https://api.tfl.gov.uk/Journey/JourneyResults/${stopPoint.icsCode}/to/${action.workStationIcsId}&time=0900`
+                )
               )
             )
-          )
         )
+      }
     )
     .map(responses => {
       const responseData = [];
@@ -45,12 +51,14 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
       return receiveCommuteFormData(responseData);
     })
     .catch(error => {
-      let errorMessage = 'Something unusual has happened, please try again.';
+      let errorMessage = error.message;
 
       if (error.message === 'Network Error') {
         errorMessage = 'There must be too many stations in this area!';
-      } else if (error.response.data.toLocationDisambiguation.matchStatus === 'empty') {
-        errorMessage = 'Please enter a valid station for your work station';
+      }
+
+      if (error.response && error.response.data.toLocationDisambiguation.matchStatus === 'empty') {
+        errorMessage = 'Please enter a valid station for your work station.';
       }
 
       return Observable.of(failedCommuteFormRequest(errorMessage));

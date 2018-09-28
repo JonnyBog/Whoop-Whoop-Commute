@@ -12,7 +12,7 @@ import LocationPicker from 'components/location-picker/location-picker';
  * Commute Form
  * @returns {element} JSX
  */
-export default function CommuteForm ({ requestCommuteFormData, data, error }) {
+export default function CommuteForm ({ requestCommuteFormData, isFetching, data, error }) {
   return (
     <Fragment>
       <Formik
@@ -26,10 +26,8 @@ export default function CommuteForm ({ requestCommuteFormData, data, error }) {
           }
         }
         validationSchema={Yup.object().shape({
-          lat: Yup.string()
-            .required('Required'),
-          lng: Yup.string()
-            .required('Required')
+          workStationIcsId: Yup.string()
+            .required('No one station matches your work station')
         })}
         onSubmit={values => {
           requestCommuteFormData({
@@ -57,6 +55,7 @@ export default function CommuteForm ({ requestCommuteFormData, data, error }) {
                 id="workStation"
                 value={values.workStationName}
                 onChange={handleChange}
+                error={errors.workStationIcsId}
               />
               <MilesPicker
                 id="mileRadius"
@@ -73,7 +72,7 @@ export default function CommuteForm ({ requestCommuteFormData, data, error }) {
                 onChange={handleChange}
                 radius={values.mileRadius}
               />
-              <button type="submit" disabled={isSubmitting}>
+              <button type="submit" disabled={isFetching}>
                 Submit
               </button>
             </form>
