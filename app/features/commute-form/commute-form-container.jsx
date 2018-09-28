@@ -9,6 +9,7 @@ import CommuteForm from 'features/commute-form/commute-form';
 const CommuteFormContainer = props => (
   <CommuteForm
     data={props.commuteForm.data}
+    error={props.commuteForm.error}
     requestCommuteFormData={props.requestCommuteFormData}
   />
 );

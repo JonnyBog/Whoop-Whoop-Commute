@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import {
   COMMUTE_FORM_REQUEST,
   receiveCommuteFormData,
+  networkErrorCommuteFormRequest,
   failedCommuteFormRequest
 } from 'features/commute-form/actions/commute-form-actions';
 /**
@@ -43,5 +44,15 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
 
       return receiveCommuteFormData(responseData);
     })
-    .catch(error => Observable.of(failedCommuteFormRequest(error)));
+    .catch(error => {
+      let errorMessage = 'Something unusual has happened, please try again.';
+
+      if (error.message === 'Network Error') {
+        errorMessage = 'There must be too many stations in this area!';
+      } else if (error.response.data.toLocationDisambiguation.matchStatus === 'empty') {
+        errorMessage = 'Please enter a valid station for your work station';
+      }
+
+      return Observable.of(failedCommuteFormRequest(errorMessage));
+    });
 }

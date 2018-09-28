@@ -12,7 +12,7 @@ import LocationPicker from 'components/location-picker/location-picker';
  * Commute Form
  * @returns {element} JSX
  */
-export default function CommuteForm ({ requestCommuteFormData, data }) {
+export default function CommuteForm ({ requestCommuteFormData, data, error }) {
   return (
     <Fragment>
       <Formik
@@ -81,6 +81,9 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
         }}
       </Formik>
       {
+        error && <div>{error}</div>
+      }
+      {
         data &&
           <Fragment>
             <h2>Results:</h2>
@@ -100,9 +103,11 @@ export default function CommuteForm ({ requestCommuteFormData, data }) {
 
 CommuteForm.propTypes = {
   requestCommuteFormData: PropTypes.func.isRequired,
-  data: PropTypes.shape()
+  data: PropTypes.shape(),
+  error: PropTypes.string
 };
 
 CommuteForm.defaultProps = {
-  data: {}
+  data: {},
+  error: ''
 };

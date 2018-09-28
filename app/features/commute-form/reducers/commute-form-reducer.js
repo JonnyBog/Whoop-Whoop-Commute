@@ -1,12 +1,14 @@
 import {
   COMMUTE_FORM_REQUEST,
   COMMUTE_FORM_SUCCESS,
+  COMMUTE_FORM_NETWORK_ERROR,
   COMMUTE_FORM_FAILURE
 } from 'features/commute-form/actions/commute-form-actions';
 
 const defaultState = {
   isFetching: false,
-  data: null
+  data: null,
+  error: null
 };
 
 /**
@@ -19,7 +21,9 @@ export default function (state = defaultState, action) {
   switch (action.type) {
     case COMMUTE_FORM_REQUEST:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
+        error: null,
+        data: null
       });
     case COMMUTE_FORM_SUCCESS:
       return Object.assign({}, state, {
@@ -29,8 +33,7 @@ export default function (state = defaultState, action) {
     case COMMUTE_FORM_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        error: action.response.message,
-        data: null
+        error: action.response
       });
     default:
       return state;
