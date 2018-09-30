@@ -28,6 +28,42 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
       Observable.fromPromise(apiHelper.get(
         `https://api.tfl.gov.uk/StopPoint?stopTypes=NaptanMetroStation,NaptanRailStation&radius=${action.mileRadius}&lat=${action.lat}&lon=${action.lng}&app_id=${constants.tflAppId}&app_key=${constants.tflAppKey}`
       ))
+        .switchMap(response => {
+          if (!response.data.stopPoints.length) {
+            return Observable.of(failedCommuteFormRequest('There are no stations in this area.'));
+          }
+
+          return Observable.forkJoin(
+            response.data.stopPoints
+              .filter(stopPoint => stopPoint.icsCode !== action.workStationIcsId)
+              .map(stopPoint =>
+                Observable.fromPromise(
+                  apiHelper.get(
+                    `https://api.tfl.gov.uk/Journey/JourneyResults/${stopPoint.icsCode}/to/${action.workStationIcsId}&time=0900&app_id=${constants.tflAppId}&app_key=${constants.tflAppKey}`
+                  )
+                )
+              )
+          )
+            .map(responses => {
+              const responseData = [];
+
+              responses.forEach(journeyResponse => {
+                responseData.push(journeyResponse.data.journeys[0]);
+              });
+
+              return receiveCommuteFormData(responseData);
+            })
+            .pipe(
+              catchError(error => {
+                const errorMessage =
+                  error.response && error.response.data.toLocationDisambiguation.matchStatus === 'empty'
+                    ? 'Please enter a valid station for your work station'
+                    : error.message;
+
+                return Observable.of(failedCommuteFormRequest(errorMessage));
+              })
+            );
+        })
         .catch(error => {
           const errorMessage =
             error.message === 'Network Error'
@@ -35,44 +71,5 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
               : error.message;
 
           return Observable.of(failedCommuteFormRequest(errorMessage));
-        }),
-    (action, response) => ([response, action]))
-    .switchMap(
-      ([response, action]) => {
-        if (!response.data.stopPoints.length) {
-          return Observable.of(failedCommuteFormRequest('There are no stations in this area.'));
-        }
-
-        return Observable.forkJoin(
-          response.data.stopPoints
-            .filter(stopPoint => stopPoint.icsCode !== action.workStationIcsId)
-            .map(stopPoint =>
-              Observable.fromPromise(
-                apiHelper.get(
-                  `https://api.tfl.gov.uk/Journey/JourneyResults/${stopPoint.icsCode}/to/${action.workStationIcsId}&time=0900&app_id=${constants.tflAppId}&app_key=${constants.tflAppKey}`
-                )
-              )
-            )
-        )
-          .map(responses => {
-            const responseData = [];
-
-            responses.forEach(journeyResponse => {
-              responseData.push(journeyResponse.data.journeys[0]);
-            });
-
-            return receiveCommuteFormData(responseData);
-          })
-          .pipe(
-            catchError(error => {
-              const errorMessage =
-                error.response && error.response.data.toLocationDisambiguation.matchStatus === 'empty'
-                  ? 'Please enter a valid station for your work station'
-                  : error.message;
-
-              return Observable.of(failedCommuteFormRequest(errorMessage));
-            })
-          );
-      }
-    );
+        }));
 }
