@@ -35,7 +35,7 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
 
           return Observable.forkJoin(
             response.data.stopPoints
-              .filter(stopPoint => stopPoint.icsCode !== action.workStation)
+              .filter(stopPoint => stopPoint.icsCode && stopPoint.icsCode !== action.workStation)
               .map(stopPoint =>
                 Observable.fromPromise(
                   apiHelper.get(
