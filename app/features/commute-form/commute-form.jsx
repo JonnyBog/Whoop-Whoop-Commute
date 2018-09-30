@@ -87,12 +87,24 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
           <Fragment>
             <h2>Results:</h2>
             {
-              data.map(journey => (
-                <Fragment>
-                  <p>station: {journey.legs[0].departurePoint.commonName}</p>
-                  <p>duration: {journey.duration}</p>
-                </Fragment>
-              ))
+              data.map(journey => {
+                const { commonName } = journey.legs[0].departurePoint;
+
+                return (
+                  <div key={commonName}>
+                    <p>station: {commonName}</p>
+                    <p>duration: {journey.duration}</p>
+                    <p>
+                      instructions:
+                      {
+                        journey.legs.map(leg => (
+                          <p>{leg.instruction.summary}</p>
+                        ))
+                      }
+                    </p>
+                  </div>
+                );
+              })
             }
           </Fragment>
       }
@@ -102,7 +114,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
 
 CommuteForm.propTypes = {
   requestCommuteFormData: PropTypes.func.isRequired,
-  data: PropTypes.shape(),
+  data: PropTypes.arrayOf(PropTypes.shape()),
   error: PropTypes.string
 };
 

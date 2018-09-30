@@ -17,7 +17,7 @@ const CommuteFormContainer = props => (
 
 CommuteFormContainer.propTypes = {
   commuteForm: PropTypes.shape({
-    data: PropTypes.shape(),
+    data: PropTypes.arrayOf(PropTypes.shape()),
     error: PropTypes.string,
     isFetching: PropTypes.bool
   }).isRequired,
