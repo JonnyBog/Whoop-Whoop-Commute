@@ -26,7 +26,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         }
         validationSchema={Yup.object().shape({
           workStation: Yup.string()
-            .required('No one station matches your work station')
+            .required('Please enter a work station')
         })}
         onSubmit={values => {
           requestCommuteFormData({
@@ -46,7 +46,8 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
             handleChange,
             handleBlur,
             handleSubmit,
-            setFieldValue
+            setFieldValue,
+            submitCount
           } = props;
 
           return (
@@ -55,7 +56,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                 id="workStation"
                 value={values.workStation}
                 setFieldValue={setFieldValue}
-                error={errors.workStation}
+                error={submitCount > 0 && errors.workStation}
               />
               <MilesPicker
                 id="mileRadius"

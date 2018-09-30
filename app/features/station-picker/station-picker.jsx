@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import styled from 'styled-components';
@@ -10,10 +10,9 @@ import styled from 'styled-components';
 export default class StationPicker extends Component {
   /**
    * constructor
-   * @param {Object} props - react props
    */
-  constructor (props) {
-    super(props);
+  constructor () {
+    super();
 
     this.options = [];
   }
@@ -43,7 +42,7 @@ export default class StationPicker extends Component {
   }
 
   handleMenuClose () {
-    this.props.requestStationPickerData();
+    this.options = [];
   }
 
   /**
@@ -54,7 +53,7 @@ export default class StationPicker extends Component {
     this.updateOptions();
 
     return (
-      <Fragment>
+      <div>
         <Select
           id={this.props.id}
           options={this.options}
@@ -63,7 +62,10 @@ export default class StationPicker extends Component {
           onMenuClose={() => this.handleMenuClose()}
           noOptionsMessage={() => 'Type to search for stations'}
         />
-      </Fragment>
+        {
+          this.props.error && <p>{this.props.error}</p>
+        }
+      </div>
     );
   }
 }
