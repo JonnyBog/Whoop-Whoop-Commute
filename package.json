@@ -90,6 +90,7 @@
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "react-safety-helmet": "^6.2.1",
+    "react-select": "^2.0.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-observable": "^0.18.0",

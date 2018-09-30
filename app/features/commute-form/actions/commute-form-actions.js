@@ -7,9 +7,9 @@ export const COMMUTE_FORM_FAILURE = 'COMMUTE_FORM_FAILURE';
  * requestCommuteFormData
  * @return {Object} type
  */
-export const requestCommuteFormData = ({ workStationIcsId, mileRadius, lat, lng }) => ({
+export const requestCommuteFormData = ({ workStation, mileRadius, lat, lng }) => ({
   type: COMMUTE_FORM_REQUEST,
-  workStationIcsId,
+  workStation,
   mileRadius,
   lat,
   lng

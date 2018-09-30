@@ -35,11 +35,11 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
 
           return Observable.forkJoin(
             response.data.stopPoints
-              .filter(stopPoint => stopPoint.icsCode !== action.workStationIcsId)
+              .filter(stopPoint => stopPoint.icsCode !== action.workStation)
               .map(stopPoint =>
                 Observable.fromPromise(
                   apiHelper.get(
-                    `https://api.tfl.gov.uk/Journey/JourneyResults/${stopPoint.icsCode}/to/${action.workStationIcsId}&time=0900&app_id=${constants.tflAppId}&app_key=${constants.tflAppKey}`
+                    `https://api.tfl.gov.uk/Journey/JourneyResults/${stopPoint.icsCode}/to/${action.workStation}&time=0900&app_id=${constants.tflAppId}&app_key=${constants.tflAppKey}`
                   )
                 )
               )

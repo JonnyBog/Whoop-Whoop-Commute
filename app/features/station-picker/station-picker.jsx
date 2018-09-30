@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
 import styled from 'styled-components';
 
 /**
@@ -14,34 +15,35 @@ export default class StationPicker extends Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      icsid: ''
-    };
-
-    this.handleBlur = this.handleBlur.bind(this);
+    this.options = [];
   }
 
   /**
-   * handleBlur
-   * @returns {Void} - void
+   * updateOptions
+   * @returns {Void} void
    */
-  handleBlur () {
-    if (this.stationPickerInput.list && this.stationPickerInput.list.options.length === 1) {
-      this.setState({
-        icsid: this.stationPickerInput.list.options[0].dataset.icsid
-      },
-      () => {
-        this.stationPickerHiddenInput.click();
-      }
-      );
-    } else {
-      this.setState({
-        icsid: ''
-      },
-      () => {
-        this.stationPickerHiddenInput.click();
-      });
+  updateOptions () {
+    if (this.props.data) {
+      this.options =
+        this.props.data.matches.map(match => {
+          return {
+            value: match.icsId,
+            label: match.name
+          };
+        });
     }
+  }
+
+  handleChange (input) {
+    this.props.setFieldValue(this.props.id, input.value);
+  }
+
+  handleRequest (input) {
+    this.props.requestStationPickerData(input);
+  }
+
+  handleMenuClose () {
+    this.props.requestStationPickerData();
   }
 
   /**
@@ -49,38 +51,18 @@ export default class StationPicker extends Component {
    * @returns {JSX} - JSX
    */
   render () {
+    this.updateOptions();
+
     return (
       <Fragment>
-        <input
-          id={`${this.props.id}Name`}
-          list={`${this.props.id}-list`}
-          value={this.props.value}
-          onBlur={this.handleBlur}
-          onChange={this.props.onChange}
-          onKeyUp={e => this.props.requestStationPickerData(e.target.value)}
-          ref={input => this.stationPickerInput = input}
+        <Select
+          id={this.props.id}
+          options={this.options}
+          onChange={input => this.handleChange(input)}
+          onInputChange={input => this.handleRequest(input)}
+          onMenuClose={() => this.handleMenuClose()}
+          noOptionsMessage={() => 'Type to search for stations'}
         />
-        <input
-          id={`${this.props.id}IcsId`}
-          value={this.state.icsid}
-          onChange={this.props.onChange}
-          onClick={this.props.onChange}
-          ref={input => this.stationPickerHiddenInput = input}
-          type="hidden"
-        />
-        {
-          this.props.error && <p>{this.props.error}</p>
-        }
-        {
-          this.props.data && this.props.data.matches &&
-            <datalist id={`${this.props.id}-list`}>
-              {
-                this.props.data.matches.map(match => (
-                  <option value={match.name} key={match.name} data-icsid={match.icsId} />
-                ))
-              }
-            </datalist>
-        }
       </Fragment>
     );
   }

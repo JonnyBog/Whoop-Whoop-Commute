@@ -18,20 +18,19 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
       <Formik
         initialValues={
           {
-            workStationName: '',
-            workStationIcsId: '',
+            workStation: '',
             mileRadius: 1,
             lat: 51.5081,
             lng: -0.1249
           }
         }
         validationSchema={Yup.object().shape({
-          workStationIcsId: Yup.string()
+          workStation: Yup.string()
             .required('No one station matches your work station')
         })}
         onSubmit={values => {
           requestCommuteFormData({
-            workStationIcsId: values.workStationIcsId,
+            workStation: values.workStation,
             mileRadius: Math.round(values.mileRadius * 1609.34),
             lat: values.lat,
             lng: values.lng
@@ -46,16 +45,17 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
             isSubmitting,
             handleChange,
             handleBlur,
-            handleSubmit
+            handleSubmit,
+            setFieldValue
           } = props;
 
           return (
             <form onSubmit={handleSubmit}>
               <StationPicker
                 id="workStation"
-                value={values.workStationName}
-                onChange={handleChange}
-                error={errors.workStationIcsId}
+                value={values.workStation}
+                setFieldValue={setFieldValue}
+                error={errors.workStation}
               />
               <MilesPicker
                 id="mileRadius"
