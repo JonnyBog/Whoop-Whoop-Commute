@@ -17,6 +17,10 @@ export default class StationPicker extends Component {
     this.options = [];
   }
 
+  componentDidUpdate () {
+    this.updateOptions();
+  }
+
   /**
    * updateOptions
    * @returns {Void} void
@@ -50,8 +54,6 @@ export default class StationPicker extends Component {
    * @returns {JSX} - JSX
    */
   render () {
-    this.updateOptions();
-
     return (
       <div>
         <Select
