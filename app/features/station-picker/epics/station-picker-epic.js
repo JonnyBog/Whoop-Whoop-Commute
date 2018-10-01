@@ -17,15 +17,12 @@ import {
  */
 export default function fetchStationPickerData (action$, store, { apiHelper }) {
   return action$.ofType(STATION_PICKER_REQUEST)
-    .switchMap(action => {
-      if (action.targetValue) {
-        return Observable.fromPromise(apiHelper.get(
-          `https://api.tfl.gov.uk/StopPoint/Search/${action.targetValue}?modes=tube%2C%20dlr%2C%20overground%2C%20tflrail%2C%20tram%2C%20tram%2C%20national-rail`
-        ))
-          .map(response => receiveStationPickerData(response))
-          .catch(error => Observable.of(failedStationPickerRequest(error)));
-      }
-
-      return Observable.of(failedStationPickerRequest('no target value'));
-    });
+    .filter(action => action.targetValue)
+    .switchMap(action =>
+      Observable.fromPromise(apiHelper.get(
+        `https://api.tfl.gov.uk/StopPoint/Search/${action.targetValue}?modes=tube%2C%20dlr%2C%20overground%2C%20tflrail%2C%20tram%2C%20tram%2C%20national-rail`
+      ))
+        .map(response => receiveStationPickerData(response))
+        .catch(error => Observable.of(failedStationPickerRequest(error)))
+    );
 }
