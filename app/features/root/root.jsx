@@ -5,6 +5,8 @@ import { renderRoutes } from 'react-router-config';
 import routes from 'routes';
 import { appStyles } from 'base-styles';
 
+import Header from 'components/header/header';
+
 /**
  * Root
  * @return {element} JSX
@@ -14,6 +16,7 @@ export default function Root () {
 
   return (
     <Fragment>
+      <Header />
       <Switch>
         { renderRoutes(routes) }
       </Switch>

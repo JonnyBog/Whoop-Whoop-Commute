@@ -3,8 +3,9 @@ import styled, { injectGlobal } from 'styled-components';
 import { reset } from 'styled-reset';
 import { Flex, Box } from 'grid-styled';
 
-import RobotoRegular from 'assets/fonts/roboto/roboto-regular.woff';
-import RobotoBold from 'assets/fonts/roboto/roboto-bold.woff';
+import DosisRegular from 'assets/fonts/dosis/dosis-regular.ttf';
+import DosisBold from 'assets/fonts/dosis/dosis-bold.ttf';
+import fredokaOne from 'assets/fonts/fredokaOne/FredokaOne-Regular.ttf';
 
 export const colors = {
   black: '#000000',
@@ -34,40 +35,45 @@ export const mediaQueries = {
 
 const fontFamilies = `
   @font-face {
-    font-family: 'Roboto Regular';
-    src: url('${RobotoRegular}') format('woff');
+    font-family: 'Dosis Regular';
+    src: url('${DosisRegular}') format('woff');
   }
 
   @font-face {
-    font-family: 'Roboto Bold';
-    src: url('${RobotoBold}') format('woff');
+    font-family: 'Dosis Bold';
+    src: url('${DosisBold}') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Fredoka One Regular';
+    src: url('${fredokaOne}') format('woff');
   }
 `;
 
 export const fonts = {
-  primary: 'Roboto Regular, Arial, Helvetica, sans-serif',
-  primaryBold: 'Roboto Bold, Arial, Helvetica, sans-serif'
+  primary: 'Dosis Regular, Arial, Helvetica, sans-serif',
+  primaryBold: 'Dosis Bold, Arial, Helvetica, sans-serif',
+  secondary: 'Fredoka One Regular'
 };
 
 export const typography = {
-  subheadingPrimary: `
+  copy: `
     font-family: ${fonts.primary};
     font-size: 14px;
     letter-spacing: 1px;
-    text-transform: uppercase;
 
     ${mediaQueries.desktop} {
       font-size: 16px;
     }
   `,
-  subheadingPrimaryBold: `
+  subHeading: `
     font-family: ${fonts.primaryBold};
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 1px;
     text-transform: uppercase;
 
     ${mediaQueries.desktop} {
-      font-size: 16px;
+      font-size: 18px;
     }
   `
 };
@@ -135,8 +141,6 @@ export const appStyles = () => injectGlobal`
   }
 
   body {
-    background: ${colors.white};
-    color: ${colors.black};
     font-family: ${fonts.primary};
   }
 
@@ -144,8 +148,3 @@ export const appStyles = () => injectGlobal`
     text-decoration: none;
   }
 `;
-
-export const zIndex = {
-
-};
-

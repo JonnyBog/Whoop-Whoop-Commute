@@ -37,7 +37,7 @@ export default class StationPicker extends Component {
     this.props.setFieldValue(this.props.id, input.value);
   }
 
-  handleRequest (input) {
+  handleInputChange (input) {
     this.props.requestStationPickerData(input);
   }
 
@@ -56,9 +56,10 @@ export default class StationPicker extends Component {
       <div>
         <Select
           id={this.props.id}
+          instanceId={this.props.id}
           options={this.options}
           onChange={input => this.handleChange(input)}
-          onInputChange={input => this.handleRequest(input)}
+          onInputChange={input => this.handleInputChange(input)}
           onMenuClose={() => this.handleMenuClose()}
           noOptionsMessage={() => 'Type to search for stations'}
         />

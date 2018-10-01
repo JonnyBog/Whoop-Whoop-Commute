@@ -11,7 +11,7 @@ import {
 import { CommuteForm } from 'features';
 
 const HomeContainer = styled(GridContainer)`
-  padding-top: 80px;
+  padding-top: 0px;
 `;
 
 /**
@@ -25,7 +25,7 @@ export default function Home ({ data }) {
         width={[1, 1/1, 1/1]}
         py={gridGutterAll}
       >
-        {data.currentForecast[0].forecastText}
+        {data.currentForecast[0].forecastSummary}
         <CommuteForm />
       </GridItem>
     </HomeContainer>

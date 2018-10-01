@@ -92,17 +92,17 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                 const { commonName } = journey.legs[0].departurePoint;
 
                 return (
-                  <div key={commonName}>
+                  <div key={journey.legs[0].instruction.summary}>
                     <p>station: {commonName}</p>
                     <p>duration: {journey.duration}</p>
-                    <p>
+                    <div>
                       instructions:
                       {
                         journey.legs.map(leg => (
-                          <p>{leg.instruction.summary}</p>
+                          <p key={leg.instruction.summary}>{leg.instruction.summary}</p>
                         ))
                       }
-                    </p>
+                    </div>
                   </div>
                 );
               })
