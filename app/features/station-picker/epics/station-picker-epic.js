@@ -26,12 +26,15 @@ export default function fetchStationPickerData (action$, store, { apiHelper }) {
         `https://api.tfl.gov.uk/StopPoint/Search/${action.targetValue}?modes=tube%2C%20dlr%2C%20overground%2C%20tflrail%2C%20tram%2C%20tram%2C%20national-rail`
       ))
         .map(response => {
-          const matches = response.data.matches.map(match => {
-            return {
-              value: match.icsId,
-              label: match.name
-            };
-          });
+          const matches =
+            response.data.matches
+              .filter(match => match.icsId)
+              .map(match => {
+                return {
+                  value: match.icsId,
+                  label: match.name
+                };
+            });
 
           return receiveStationPickerData({
             data: {

@@ -81,6 +81,9 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         }}
       </Formik>
       {
+        isFetching && <p>Loading...</p>
+      }
+      {
         error && <div>{error}</div>
       }
       {
