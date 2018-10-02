@@ -13,28 +13,6 @@ export default class StationPicker extends Component {
    */
   constructor () {
     super();
-
-    this.options = [];
-  }
-
-  componentDidUpdate () {
-    this.updateOptions();
-  }
-
-  /**
-   * updateOptions
-   * @returns {Void} void
-   */
-  updateOptions () {
-    if (this.props.data) {
-      this.options =
-        this.props.data.matches.map(match => {
-          return {
-            value: match.icsId,
-            label: match.name
-          };
-        });
-    }
   }
 
   handleChange (input) {
@@ -43,10 +21,6 @@ export default class StationPicker extends Component {
 
   handleInputChange (input) {
     this.props.requestStationPickerData(input);
-  }
-
-  handleMenuClose () {
-    this.options = [];
   }
 
   /**
@@ -59,10 +33,9 @@ export default class StationPicker extends Component {
         <Select
           id={this.props.id}
           instanceId={this.props.id}
-          options={this.options}
+          options={this.props.data.matches}
           onChange={input => this.handleChange(input)}
           onInputChange={input => this.handleInputChange(input)}
-          onMenuClose={() => this.handleMenuClose()}
           noOptionsMessage={() => 'Type to search for stations'}
         />
         {

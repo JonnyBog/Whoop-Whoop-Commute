@@ -6,7 +6,9 @@ import {
 
 const defaultState = {
   isFetching: false,
-  data: null
+  data: {
+    matches: []
+  }
 };
 
 /**
@@ -30,7 +32,9 @@ export default function (state = defaultState, action) {
       return Object.assign({}, state, {
         isFetching: false,
         error: action.response.message,
-        data: null
+        data: {
+          matches: []
+        }
       });
     default:
       return state;
