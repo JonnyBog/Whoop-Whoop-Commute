@@ -5,13 +5,32 @@ import styled from 'styled-components';
 import {
   GridContainer,
   GridItem,
-  gridGutterAll
+  typography,
+  mediaQueries
 } from 'base-styles';
 
 import { CommuteForm } from 'features';
 
-const HomeContainer = styled(GridContainer)`
-  padding-top: 0px;
+const WeatherContainer = styled.div`
+  margin-bottom: 20px;
+  max-width: 800px;
+
+  ${mediaQueries.tablet} {
+    margin-bottom: 30px;
+  }
+
+  ${mediaQueries.desktop} {
+    margin-bottom: 40px;
+  }
+`;
+
+const WeatherTitle = styled.h2`
+  ${typography.heading}
+  margin-bottom: 10px;
+`;
+
+const WeatherForecast = styled.p`
+  ${typography.copy}
 `;
 
 /**
@@ -20,15 +39,21 @@ const HomeContainer = styled(GridContainer)`
  */
 export default function Home ({ data }) {
   return (
-    <HomeContainer>
+    <GridContainer>
       <GridItem
         width={[1, 1/1, 1/1]}
-        py={gridGutterAll}
       >
-        {data.currentForecast[0].forecastSummary}
+        <WeatherContainer>
+          <WeatherTitle>
+            Today&#39;s forecast:
+          </WeatherTitle>
+          <WeatherForecast>
+            {data.currentForecast[0].forecastSummary}
+          </WeatherForecast>
+        </WeatherContainer>
         <CommuteForm />
       </GridItem>
-    </HomeContainer>
+    </GridContainer>
   );
 }
 

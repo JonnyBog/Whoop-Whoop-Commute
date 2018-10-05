@@ -9,7 +9,8 @@ import fredokaOne from 'assets/fonts/fredokaOne/FredokaOne-Regular.ttf';
 
 export const colors = {
   black: '#000000',
-  white: '#FFFFFF'
+  white: '#FFFFFF',
+  orange: '#e8b52c'
 };
 
 export const breakPoints = {
@@ -60,20 +61,28 @@ export const typography = {
   copy: `
     font-family: ${fonts.primary};
     font-size: 14px;
-    letter-spacing: 1px;
+    line-height: 18px;
 
-    ${mediaQueries.desktop} {
+    ${mediaQueries.tablet} {
       font-size: 16px;
+      line-height: 20px;
     }
-  `,
-  subHeading: `
-    font-family: ${fonts.primaryBold};
-    font-size: 16px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
 
     ${mediaQueries.desktop} {
       font-size: 18px;
+      line-height: 22px;
+    }
+  `,
+  heading: `
+    font-family: ${fonts.primaryBold};
+    font-size: 18px;
+
+    ${mediaQueries.tablet} {
+      font-size: 22px;
+    }
+
+    ${mediaQueries.desktop} {
+      font-size: 26px;
     }
   `
 };
