@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import LoaderDefault from 'components/loader-default/loader-default';
-import LoaderOne from 'components/loader-one/loader-one';
 
 /**
  * ConditionalRender - handles render states
@@ -19,8 +18,6 @@ function ConditionalRender (
    */
   function handleLoader () {
     switch (loader) {
-      case 'loaderOne':
-        return <LoaderOne />;
       default:
         return <LoaderDefault />;
     }

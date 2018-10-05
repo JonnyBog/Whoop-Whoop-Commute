@@ -7,6 +7,10 @@ import * as Yup from 'yup';
 import { StationPicker } from 'features';
 import MilesPicker from 'components/miles-picker/miles-picker';
 import LocationPicker from 'components/location-picker/location-picker';
+import CommuteFormSubmit from './components/commute-form-submit/commute-form-submit';
+import CommuteFormLoader from './components/commute-form-loader/commute-form-loader';
+import CommuteFormError from './components/commute-form-error/commute-form-error';
+import CommuteFormResults from './components/commute-form-results/commute-form-results';
 
 /**
  * Commute Form
@@ -26,7 +30,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         }
         validationSchema={Yup.object().shape({
           workStation: Yup.string()
-            .required('Please enter a work station')
+            .required('Please enter your work station')
         })}
         onSubmit={values => {
           requestCommuteFormData({
@@ -40,11 +44,8 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         {props => {
           const {
             values,
-            touched,
             errors,
-            isSubmitting,
             handleChange,
-            handleBlur,
             handleSubmit,
             setFieldValue,
             submitCount
@@ -73,44 +74,26 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                 onChange={handleChange}
                 radius={values.mileRadius}
               />
-              <button type="submit" disabled={isFetching}>
+              <CommuteFormSubmit isFetching={isFetching}>
                 Submit
-              </button>
+              </CommuteFormSubmit>
             </form>
           );
         }}
       </Formik>
       {
-        isFetching && <p>Loading...</p>
+        isFetching &&
+          <CommuteFormLoader />
       }
       {
-        error && <div>{error}</div>
+        error &&
+        <CommuteFormError>
+          {error}
+        </CommuteFormError>
       }
       {
         data &&
-          <Fragment>
-            <h2>Results:</h2>
-            {
-              data.map(journey => {
-                const { commonName } = journey.legs[0].departurePoint;
-
-                return (
-                  <div key={journey.legs[0].instruction.summary}>
-                    <p>station: {commonName}</p>
-                    <p>duration: {journey.duration}</p>
-                    <div>
-                      instructions:
-                      {
-                        journey.legs.map(leg => (
-                          <p key={leg.instruction.summary}>{leg.instruction.summary}</p>
-                        ))
-                      }
-                    </div>
-                  </div>
-                );
-              })
-            }
-          </Fragment>
+          <CommuteFormResults data={data} />
       }
     </Fragment>
   );

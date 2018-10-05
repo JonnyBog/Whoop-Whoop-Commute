@@ -48,7 +48,7 @@ class HomeContainer extends Component {
     return (
       <ConditionalRender
         storeItem={this.props.home}
-        loader="loaderOne"
+        loader="loaderDefault"
         loaded={() => (
           <Home
             data={this.props.home.data}

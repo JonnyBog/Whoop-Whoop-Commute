@@ -75,14 +75,17 @@ export const typography = {
   `,
   heading: `
     font-family: ${fonts.primaryBold};
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 18px;
 
     ${mediaQueries.tablet} {
-      font-size: 22px;
+      font-size: 18px;
+      line-height: 22px;
     }
 
     ${mediaQueries.desktop} {
-      font-size: 26px;
+      font-size: 22px;
+      line-height: 26px;
     }
   `
 };

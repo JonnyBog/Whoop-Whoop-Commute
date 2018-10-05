@@ -1,37 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import {
   GridContainer,
-  GridItem,
-  typography,
-  mediaQueries
+  GridItem
 } from 'base-styles';
 
 import { CommuteForm } from 'features';
-
-const WeatherContainer = styled.div`
-  margin-bottom: 20px;
-  max-width: 800px;
-
-  ${mediaQueries.tablet} {
-    margin-bottom: 30px;
-  }
-
-  ${mediaQueries.desktop} {
-    margin-bottom: 40px;
-  }
-`;
-
-const WeatherTitle = styled.h2`
-  ${typography.heading}
-  margin-bottom: 10px;
-`;
-
-const WeatherForecast = styled.p`
-  ${typography.copy}
-`;
+import HomeForecast from './components/home-forecast/home-forecast';
 
 /**
  * Home
@@ -43,14 +19,7 @@ export default function Home ({ data }) {
       <GridItem
         width={[1, 1/1, 1/1]}
       >
-        <WeatherContainer>
-          <WeatherTitle>
-            Today&#39;s forecast:
-          </WeatherTitle>
-          <WeatherForecast>
-            {data.currentForecast[0].forecastSummary}
-          </WeatherForecast>
-        </WeatherContainer>
+        <HomeForecast forecastSummary={data.currentForecast[0].forecastSummary} />
         <CommuteForm />
       </GridItem>
     </GridContainer>
