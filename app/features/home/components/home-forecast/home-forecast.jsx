@@ -8,7 +8,6 @@ import {
 
 const WeatherContainer = styled.div`
   margin-bottom: 20px;
-  max-width: 800px;
 
   ${mediaQueries.tablet} {
     margin-bottom: 30px;

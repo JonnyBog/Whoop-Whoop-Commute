@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import styled from 'styled-components';
 
+import FormError from 'components/form-error/form-error';
+
+const StationPickerContainer = styled.div`
+`;
+
 /**
  * Station Picker
  * @returns {element} JSX
@@ -29,7 +34,7 @@ export default class StationPicker extends Component {
    */
   render () {
     return (
-      <div>
+      <StationPickerContainer>
         <Select
           id={this.props.id}
           instanceId={this.props.id}
@@ -39,9 +44,9 @@ export default class StationPicker extends Component {
           noOptionsMessage={() => 'Type to search for stations'}
         />
         {
-          this.props.error && <p>{this.props.error}</p>
+          this.props.error && <FormError>{this.props.error}</FormError>
         }
-      </div>
+      </StationPickerContainer>
     );
   }
 }

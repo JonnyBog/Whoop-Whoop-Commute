@@ -118,17 +118,17 @@ export const gridGutterAll = [
 
 export const GridContainer = props => (
   <Flex
-    {...props}
     px={gridAll}
     flexWrap="wrap"
+    {...props}
   />
 );
 
 export const GridItem = props => (
   <Box
-    {...props}
     px={gridGutterAll}
     flex="0 0 auto"
+    {...props}
   />
 );
 

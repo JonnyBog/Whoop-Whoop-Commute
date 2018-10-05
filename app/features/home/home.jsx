@@ -19,7 +19,12 @@ export default function Home ({ data }) {
       <GridItem
         width={[1, 1/1, 1/1]}
       >
-        <HomeForecast forecastSummary={data.currentForecast[0].forecastSummary} />
+        <GridItem
+          width={[1, 1/1, 1/2]}
+          px={[0, 0, 0]}
+        >
+          <HomeForecast forecastSummary={data.currentForecast[0].forecastSummary} />
+        </GridItem>
         <CommuteForm />
       </GridItem>
     </GridContainer>

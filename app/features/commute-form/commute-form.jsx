@@ -4,12 +4,17 @@ import styled from 'styled-components';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
+import {
+  GridContainer,
+  GridItem
+} from 'base-styles';
+
 import { StationPicker } from 'features';
 import MilesPicker from 'components/miles-picker/miles-picker';
 import LocationPicker from 'components/location-picker/location-picker';
+import FormError from 'components/form-error/form-error';
 import CommuteFormSubmit from './components/commute-form-submit/commute-form-submit';
 import CommuteFormLoader from './components/commute-form-loader/commute-form-loader';
-import CommuteFormError from './components/commute-form-error/commute-form-error';
 import CommuteFormResults from './components/commute-form-results/commute-form-results';
 
 /**
@@ -53,30 +58,47 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
 
           return (
             <form onSubmit={handleSubmit}>
-              <StationPicker
-                id="workStation"
-                value={values.workStation}
-                setFieldValue={setFieldValue}
-                error={submitCount > 0 && errors.workStation}
-              />
-              <MilesPicker
-                id="mileRadius"
-                value={values.mileRadius}
-                onChange={handleChange}
-                maxMiles={2}
-                label="Please select radius in miles"
-              />
-              <LocationPicker
-                value={{
-                  lat: values.lat,
-                  lng: values.lng
-                }}
-                onChange={handleChange}
-                radius={values.mileRadius}
-              />
-              <CommuteFormSubmit isFetching={isFetching}>
-                Submit
-              </CommuteFormSubmit>
+              <GridContainer px={[0, 0, 0]}>
+                <GridItem
+                  width={[1, 1/1, 1/2]}
+                  px={[0, 0, 0]}
+                >
+                  <StationPicker
+                    id="workStation"
+                    value={values.workStation}
+                    setFieldValue={setFieldValue}
+                    error={submitCount > 0 && errors.workStation}
+                  />
+                </GridItem>
+                <GridItem
+                  width={[1, 1/1, 1/2]}
+                  px={[0, 0, 0]}
+                >
+                  <MilesPicker
+                    id="mileRadius"
+                    value={values.mileRadius}
+                    onChange={handleChange}
+                    maxMiles={2}
+                    label="Please select radius in miles"
+                  />
+                </GridItem>
+                <GridItem
+                  width={[1, 1, 1]}
+                  px={[0, 0, 0]}
+                >
+                  <LocationPicker
+                    value={{
+                      lat: values.lat,
+                      lng: values.lng
+                    }}
+                    onChange={handleChange}
+                    radius={values.mileRadius}
+                  />
+                </GridItem>
+                <CommuteFormSubmit isFetching={isFetching}>
+                  Submit
+                </CommuteFormSubmit>
+              </GridContainer>
             </form>
           );
         }}
@@ -87,9 +109,9 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
       }
       {
         error &&
-        <CommuteFormError>
+        <FormError>
           {error}
-        </CommuteFormError>
+        </FormError>
       }
       {
         data &&
