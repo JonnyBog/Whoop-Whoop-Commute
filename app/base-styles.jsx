@@ -10,7 +10,8 @@ import fredokaOne from 'assets/fonts/fredokaOne/FredokaOne-Regular.ttf';
 export const colors = {
   black: '#000000',
   white: '#FFFFFF',
-  orange: '#e8b52c'
+  orange: '#e8b52c',
+  red: '#e02a2a'
 };
 
 export const breakPoints = {
@@ -116,6 +117,12 @@ export const gridGutterAll = [
   gridGutterDesktop
 ];
 
+export const gridMarginBottomAll = [
+  20,
+  30,
+  55
+];
+
 export const GridContainer = props => (
   <Flex
     px={gridAll}
@@ -158,5 +165,21 @@ export const appStyles = () => injectGlobal`
 
   a {
     text-decoration: none;
+  }
+
+  input, ::-webkit-input-placeholder {
+    font-family: ${fonts.primary};
+  }
+
+  .location-picker {
+    height: 200px;
+
+    ${mediaQueries.tablet} {
+      height: 300px;
+    }
+
+    ${mediaQueries.desktop} {
+      height: 500px;
+    }
   }
 `;

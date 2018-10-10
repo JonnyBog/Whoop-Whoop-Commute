@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import {
   GridContainer,
-  GridItem
+  GridItem,
+  gridMarginBottomAll
 } from 'base-styles';
 
 import { CommuteForm } from 'features';
@@ -15,13 +16,16 @@ import HomeForecast from './components/home-forecast/home-forecast';
  */
 export default function Home ({ data }) {
   return (
-    <GridContainer>
+    <GridContainer
+      mb={gridMarginBottomAll}
+    >
       <GridItem
         width={[1, 1/1, 1/1]}
       >
         <GridItem
           width={[1, 1/1, 1/2]}
           px={[0, 0, 0]}
+          mb={gridMarginBottomAll}
         >
           <HomeForecast forecastSummary={data.currentForecast[0].forecastSummary} />
         </GridItem>

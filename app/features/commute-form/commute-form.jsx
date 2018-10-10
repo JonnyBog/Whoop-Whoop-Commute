@@ -6,7 +6,8 @@ import * as Yup from 'yup';
 
 import {
   GridContainer,
-  GridItem
+  GridItem,
+  gridMarginBottomAll
 } from 'base-styles';
 
 import { StationPicker } from 'features';
@@ -14,7 +15,6 @@ import MilesPicker from 'components/miles-picker/miles-picker';
 import LocationPicker from 'components/location-picker/location-picker';
 import FormError from 'components/form-error/form-error';
 import CommuteFormSubmit from './components/commute-form-submit/commute-form-submit';
-import CommuteFormLoader from './components/commute-form-loader/commute-form-loader';
 import CommuteFormResults from './components/commute-form-results/commute-form-results';
 
 /**
@@ -58,10 +58,15 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
 
           return (
             <form onSubmit={handleSubmit}>
-              <GridContainer px={[0, 0, 0]}>
+              <GridContainer
+                px={[0, 0, 0]}
+                mb={gridMarginBottomAll}
+              >
                 <GridItem
-                  width={[1, 1/1, 1/2]}
+                  width={[1, 1/2, 1/3]}
                   px={[0, 0, 0]}
+                  mb={gridMarginBottomAll}
+                  mr={[0, 0, 50]}
                 >
                   <StationPicker
                     id="workStation"
@@ -71,15 +76,16 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                   />
                 </GridItem>
                 <GridItem
-                  width={[1, 1/1, 1/2]}
+                  width={[1, 1/1, 1/3]}
                   px={[0, 0, 0]}
+                  mb={gridMarginBottomAll}
                 >
                   <MilesPicker
                     id="mileRadius"
                     value={values.mileRadius}
                     onChange={handleChange}
                     maxMiles={2}
-                    label="Please select radius in miles"
+                    label="Home Radius"
                   />
                 </GridItem>
                 <GridItem
@@ -95,18 +101,21 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                     radius={values.mileRadius}
                   />
                 </GridItem>
-                <CommuteFormSubmit isFetching={isFetching}>
-                  Submit
+                <CommuteFormSubmit
+                  isFetching={isFetching}
+                  error={errors.workStation}
+                >
+                  {
+                    !isFetching
+                      ? 'Submit'
+                      : 'Loading...'
+                  }
                 </CommuteFormSubmit>
               </GridContainer>
             </form>
           );
         }}
       </Formik>
-      {
-        isFetching &&
-          <CommuteFormLoader />
-      }
       {
         error &&
         <FormError>

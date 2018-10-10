@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import ReactLocationPicker from 'react-location-picker';
 
+import {
+  colors
+} from 'base-styles';
+
 export default class LocationPicker extends Component {
   /**
    * constructor
@@ -36,11 +40,15 @@ export default class LocationPicker extends Component {
       <Fragment>
         <ReactLocationPicker
           containerElement={<div style={{ height: '100%' }} />}
-          mapElement={<div style={{ height: '400px' }} />}
+          mapElement={<div className="location-picker" />}
           defaultPosition={this.state.defaultPosition}
           onChange={this.handleChange}
           radius={this.props.radius * 1609.34}
           zoom={11}
+          circleOptions={{
+            strokeColor: colors.orange,
+            fillColor: colors.orange
+          }}
         />
         <input
           id="lat"

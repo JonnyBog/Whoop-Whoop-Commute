@@ -1,5 +1,10 @@
 import React, { Fragment } from 'react';
 import Proptypes from 'prop-types';
+import styled from 'styled-components';
+
+const MilesPickerLabel = styled.p`
+  margin-bottom: 5px;
+`;
 
 /**
  * Renders MilesPicker component
@@ -8,7 +13,9 @@ import Proptypes from 'prop-types';
 export default function MilesPicker ({ maxMiles, label, id, error, value, onChange }) {
   return (
     <Fragment>
-      <div>{label}</div>
+      <MilesPickerLabel>
+        {label}
+      </MilesPickerLabel>
       <input
         id={id}
         type="range"

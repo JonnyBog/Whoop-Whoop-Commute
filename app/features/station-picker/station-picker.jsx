@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import styled from 'styled-components';
 
 import FormError from 'components/form-error/form-error';
-
-const StationPickerContainer = styled.div`
-`;
 
 /**
  * Station Picker
@@ -34,7 +30,7 @@ export default class StationPicker extends Component {
    */
   render () {
     return (
-      <StationPickerContainer>
+      <Fragment>
         <Select
           id={this.props.id}
           instanceId={this.props.id}
@@ -42,11 +38,20 @@ export default class StationPicker extends Component {
           onChange={input => this.handleChange(input)}
           onInputChange={input => this.handleInputChange(input)}
           noOptionsMessage={() => 'Type to search for stations'}
+          placeholder="Work station"
+          styles={{
+             control: base => ({
+              ...base,
+              '&:hover': { borderColor: 'gray' },
+              border: '1px solid lightgray',
+              boxShadow: 'none'
+            })
+          }}
         />
         {
           this.props.error && <FormError>{this.props.error}</FormError>
         }
-      </StationPickerContainer>
+      </Fragment>
     );
   }
 }
