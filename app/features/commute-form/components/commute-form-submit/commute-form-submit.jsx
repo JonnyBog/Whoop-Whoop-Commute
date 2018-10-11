@@ -14,6 +14,8 @@ const Submit = styled.button`
   color: ${props => props.error ? colors.red : colors.white};
   ${typography.heading}
   margin-top: 20px;
+  outline: 0;
+  border: 0;
 
   &:focus, &:active {
     outline: 0;

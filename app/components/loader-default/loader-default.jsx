@@ -1,15 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Pulse } from 'styled-spinkit';
 
 import {
   colors
 } from 'base-styles';
-
-const LoaderDefaultContainer = styled.div`
-  width: 100%;
-  height: 400px;
-  background: ${colors.orange};
-`;
 
 /**
  * Renders LoaderDefault component
@@ -17,6 +11,9 @@ const LoaderDefaultContainer = styled.div`
  */
 export default function LoaderDefault () {
   return (
-    <LoaderDefaultContainer />
+    <Pulse
+      color={colors.orange}
+      size="100"
+    />
   );
 }

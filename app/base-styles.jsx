@@ -161,6 +161,15 @@ export const appStyles = () => injectGlobal`
 
   body {
     font-family: ${fonts.primary};
+    font-size: 14px;
+
+    ${mediaQueries.tablet} {
+      font-size: 16px;
+    }
+
+    ${mediaQueries.desktop} {
+      font-size: 18px;
+    }
   }
 
   a {

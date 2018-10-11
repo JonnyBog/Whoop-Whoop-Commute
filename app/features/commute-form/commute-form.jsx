@@ -53,7 +53,8 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
             handleChange,
             handleSubmit,
             setFieldValue,
-            submitCount
+            submitCount,
+            touched
           } = props;
 
           return (
@@ -103,7 +104,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                 </GridItem>
                 <CommuteFormSubmit
                   isFetching={isFetching}
-                  error={errors.workStation}
+                  error={errors.workStation && touched.workStation}
                 >
                   {
                     !isFetching
