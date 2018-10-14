@@ -14,6 +14,7 @@ import { StationPicker } from 'features';
 import MilesPicker from 'components/miles-picker/miles-picker';
 import LocationPicker from 'components/location-picker/location-picker';
 import FormError from 'components/form-error/form-error';
+import CommuteFormIntro from './components/commute-form-intro/commute-form-intro';
 import CommuteFormSubmit from './components/commute-form-submit/commute-form-submit';
 import CommuteFormResults from './components/commute-form-results/commute-form-results';
 
@@ -29,8 +30,8 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
           {
             workStation: '',
             mileRadius: 1,
-            lat: 51.5081,
-            lng: -0.1249
+            lat: 51.4272,
+            lng: -0.0543
           }
         }
         validationSchema={Yup.object().shape({
@@ -63,6 +64,13 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                 px={[0, 0, 0]}
                 mb={gridMarginBottomAll}
               >
+                <GridItem
+                  width={[1, 1, 1]}
+                  px={[0, 0, 0]}
+                  mb={gridMarginBottomAll}
+                >
+                  <CommuteFormIntro />
+                </GridItem>
                 <GridItem
                   width={[1, 1/2, 1/3]}
                   px={[0, 0, 0]}

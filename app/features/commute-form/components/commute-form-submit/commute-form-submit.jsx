@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -31,6 +31,20 @@ const Submit = styled.button`
   }
 `;
 
+const FetchingMessage = styled.p`
+  ${typography.copy}
+  margin-top: 10px;
+  width: 100%;
+
+  ${mediaQueries.tablet} {
+    margin-top: 20px;
+  }
+
+  ${mediaQueries.desktop} {
+    margin-top: 30px;
+  }
+`;
+
 /**
  * Renders CommuteFormResults component
  * @param {Array} props - react props
@@ -38,8 +52,16 @@ const Submit = styled.button`
  */
 export default function CommuteFormSubmit ({ isFetching, error, children }) {
   return (
-    <Submit disabled={isFetching} type="submit" error={error}>
-      {children}
-    </Submit>
+    <Fragment>
+      <Submit disabled={isFetching} type="submit" error={error}>
+        {children}
+      </Submit>
+      {
+        isFetching &&
+          <FetchingMessage>
+            The TFL development API can be slow. Please forgive the long loading for areas with many stations.
+          </FetchingMessage>
+      }
+    </Fragment>
   );
 }

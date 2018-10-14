@@ -6,7 +6,8 @@ import {
   GridItem,
   fonts,
   mediaQueries,
-  colors
+  colors,
+  typography
 } from 'base-styles';
 
 const Title = styled.h1`
@@ -56,6 +57,11 @@ const TitleCommute = styled.div`
   }
 `;
 
+const Message = styled.p`
+  ${typography.smallCopy}
+  width: 100%;
+`;
+
 /**
  * Renders Header component
  * @returns {JSX} react jsx
@@ -79,6 +85,9 @@ export default function Header () {
             Commute
           </TitleCommute>
         </Title>
+        <Message>
+          This is a development app. Git repo <a href="https://bitbucket.org/JonnyBoggon/whoop-whoop-commute">here</a>
+        </Message>
       </GridItem>
     </GridContainer>
   );

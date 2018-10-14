@@ -2,11 +2,17 @@ module.exports = {
   name: 'whoop-whoop-commute',
   script: './static/server.js',
   watch: true,
-  port: 3000,
-  exec_mode: 'cluster',
-  interpreter_args: '--harmony-promise-finally',
+  ignore_watch: ['node_modules'],
+  port: 3001,
+  instances: 1,
   env: {
-    NODE_ENV: 'production',
     COMMON_VARIABLE: 'true'
+  },
+  node_args: '--harmony-promise-finally',
+  env_production: {
+    NODE_ENV: 'production'
+  },
+  env_develpomemt: {
+    NODE_ENV: 'development'
   }
 };

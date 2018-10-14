@@ -74,6 +74,21 @@ export const typography = {
       line-height: 22px;
     }
   `,
+  smallCopy: `
+    font-family: ${fonts.primary};
+    font-size: 10px;
+    line-height: 14px;
+
+    ${mediaQueries.tablet} {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    ${mediaQueries.desktop} {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  `,
   heading: `
     font-family: ${fonts.primaryBold};
     font-size: 14px;
@@ -173,7 +188,7 @@ export const appStyles = () => injectGlobal`
   }
 
   a {
-    text-decoration: none;
+    color: ${colors.black}
   }
 
   input, ::-webkit-input-placeholder {
