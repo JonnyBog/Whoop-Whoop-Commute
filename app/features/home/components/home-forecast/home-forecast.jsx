@@ -1,9 +1,24 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import {
-  typography
+  typography,
+  mediaQueries
 } from 'base-styles';
+
+const WeatherContainer = styled.div`
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 30px;
+  padding: 15px;
+
+  ${mediaQueries.tablet} {
+    padding: 20px;
+  }
+
+  ${mediaQueries.desktop} {
+    padding: 30px;
+  }
+`;
 
 const WeatherTitle = styled.h2`
   ${typography.heading}
@@ -21,13 +36,13 @@ const WeatherForecast = styled.p`
  */
 export default function HomeForecast ({ forecastSummary }) {
   return (
-    <Fragment>
+    <WeatherContainer>
       <WeatherTitle>
         Today&#39;s forecast:
       </WeatherTitle>
       <WeatherForecast>
         {forecastSummary}
       </WeatherForecast>
-    </Fragment>
+    </WeatherContainer>
   );
 }

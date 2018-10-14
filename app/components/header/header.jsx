@@ -60,6 +60,15 @@ const TitleCommute = styled.div`
 const Message = styled.p`
   ${typography.smallCopy}
   width: 100%;
+  margin-top: 5px;
+
+  ${mediaQueries.tablet} {
+    margin-top: 7px;
+  }
+
+  ${mediaQueries.desktop} {
+    margin-top: 10px;
+  }
 `;
 
 /**
