@@ -1,6 +1,6 @@
 module.exports = {
   name: 'whoop-whoop-commute',
-  script: './server.js',
+  script: './static/server.js',
   watch: true,
   ignore_watch: ['node_modules'],
   port: 3001,

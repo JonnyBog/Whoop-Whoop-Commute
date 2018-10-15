@@ -2,6 +2,7 @@ const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
 const appBaseDirectory = path.join(__dirname, 'app');
+const staticBaseDirectory = path.join(__dirname, 'static');
 const serverBaseDirectory = path.join(__dirname, 'server');
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
   target: 'node',
   externals: [nodeExternals()],
   output: {
-    path: __dirname,
+    path: staticBaseDirectory,
     filename: 'server.js',
     libraryTarget: 'commonjs2',
     chunkFilename: '[name].js'

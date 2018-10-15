@@ -12,7 +12,7 @@
     "eslint-ci": "eslint . --ext .js,.jsx --format jslint-xml -o ./test-reports/unit-test-reports/eslint.xml",
     "stylelint": "stylelint . || echo \"lint failed for some file(s).\"",
     "watch-app": "BABEL_ENV=app NODE_ENV=development webpack --config webpack.config.js --watch --mode development",
-    "watch-server": "NODE_ENV=development PORT=3000 browser-refresh --inspect --harmony-promise-finally server.js",
+    "watch-server": "NODE_ENV=development PORT=3000 browser-refresh --inspect --harmony-promise-finally static/server.js",
     "start-prod": "BABEL_ENV=app NODE_ENV=production npm run build-prod && pm2 startOrRestart ecosystem.config.js --env production",
     "build-prod": "BABEL_ENV=app webpack --config webpack.config.js --mode production",
     "stop-prod": "pm2 stop ecosystem.config.js",
