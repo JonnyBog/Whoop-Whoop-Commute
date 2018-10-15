@@ -8,6 +8,7 @@ module.exports = {
   env: {
     COMMON_VARIABLE: 'true'
   },
+  node_args: '--harmony-promise-finally',
   env_production: {
     NODE_ENV: 'production'
   },
