@@ -3,7 +3,6 @@ const path = require('path');
 
 const appBaseDirectory = path.join(__dirname, 'app');
 const serverBaseDirectory = path.join(__dirname, 'server');
-const staticDirectory = path.join(__dirname, 'static');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -11,7 +10,7 @@ module.exports = {
   target: 'node',
   externals: [nodeExternals()],
   output: {
-    path: staticDirectory,
+    path: __dirname,
     filename: 'server.js',
     libraryTarget: 'commonjs2',
     chunkFilename: '[name].js'

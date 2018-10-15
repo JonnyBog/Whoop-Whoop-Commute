@@ -1,6 +1,6 @@
 module.exports = {
   name: 'whoop-whoop-commute',
-  script: './static/server.js',
+  script: './server.js',
   watch: true,
   ignore_watch: ['node_modules'],
   port: 3001,
@@ -8,7 +8,6 @@ module.exports = {
   env: {
     COMMON_VARIABLE: 'true'
   },
-  node_args: '--harmony-promise-finally',
   env_production: {
     NODE_ENV: 'production'
   },

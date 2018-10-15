@@ -14,12 +14,12 @@ export default function serverDevelopmentOptions (app) {
 
   if (environmentsHelper.IS_DEVELOPMENT_ENV) {
     sourceMapSupport.install();
-    app.use(expressStaticGzip('static', { indexFromEmptyFile: false }));
     app.get(['/json', '/json/version'], (req, res) => res.sendStatus(204));
     browserRefresh = `<script src="${process.env.BROWSER_REFRESH_URL}"></script>`;
   }
 
   app.use(morgan('combined'));
+  app.use(expressStaticGzip('./static', { indexFromEmptyFile: false }));
 
   return {
     browserRefresh
