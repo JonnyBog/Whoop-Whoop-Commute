@@ -14,12 +14,14 @@ const commonConfig = {
   },
   output: {
     path: staticDirectory,
-    filename: '[name].js',
-    chunkFilename: '[name].js'
+    filename: 'assets/[name].js',
+    chunkFilename: 'assets/[name].js'
   },
   plugins: [
     new CleanWebpackPlugin(['static']),
-    new RobotstxtPlugin()
+    new RobotstxtPlugin({
+      filePath: 'assets/robots.txt'
+    })
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -43,7 +45,7 @@ const commonConfig = {
         test: /\.(png|jpg|gif)$/,
         include: appBaseDirectory,
         use: [
-          'file-loader?&name=./images/[name].[ext]',
+          'file-loader?&name=./assets/images/[name].[ext]',
           {
             loader: 'image-webpack-loader',
             options: {
@@ -72,7 +74,7 @@ const commonConfig = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         include: appBaseDirectory,
         use: [
-          'file-loader?name=./fonts/[hash].[ext]'
+          'file-loader?name=./assets/fonts/[hash].[ext]'
         ]
       },
       {

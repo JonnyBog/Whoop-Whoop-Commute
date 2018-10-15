@@ -42,7 +42,7 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         include: appBaseDirectory,
         use: [
-          'file-loader?&name=./images/[name].[ext]',
+          'file-loader?&name=./assets/images/[name].[ext]',
           {
             loader: 'image-webpack-loader',
             options: {
@@ -71,7 +71,7 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         include: appBaseDirectory,
         use: [
-          'file-loader?name=./fonts/[hash].[ext]'
+          'file-loader?name=./assets/fonts/[hash].[ext]'
         ]
       },
       {
