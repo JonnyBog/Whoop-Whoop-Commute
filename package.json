@@ -13,7 +13,7 @@
     "stylelint": "stylelint . || echo \"lint failed for some file(s).\"",
     "watch-app": "BABEL_ENV=app NODE_ENV=development webpack --config webpack.config.js --watch --mode development",
     "watch-server": "NODE_ENV=development PORT=3000 browser-refresh --inspect --harmony-promise-finally static/server.js",
-    "start": "pm2-runtime startOrRestart ecosystem.config.js --env production -i max".
+    "start": "pm2-runtime startOrRestart ecosystem.config.js --env production -i max",
     "preinstall": "npm i -g pm2 && pm2 install pm2-logrotate",
     "postinstall": "BABEL_ENV=app NODE_ENV=production webpack --config webpack.config.js --mode production"
   },
