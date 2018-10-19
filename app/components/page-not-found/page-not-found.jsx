@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-safety-helmet';
 
 import {
   GridContainer,
@@ -12,20 +13,25 @@ import {
  */
 export default function PageNotFound () {
   return (
-    <GridContainer>
-      <GridItem
-        width={[1, 1/1, 1/1]}
-      >
+    <Fragment>
+      <Helmet>
+        <title>Whoop Whoop Commute - Page not found</title>
+      </Helmet>
+      <GridContainer>
         <GridItem
-          width={[1, 1/1, 1/2]}
-          px={[0, 0, 0]}
+          width={[1, 1/1, 1/1]}
         >
-          <p>
-            Page not found!<br /><br />
-            <Link to="/">Take me Home</Link>
-          </p>
+          <GridItem
+            width={[1, 1/1, 1/2]}
+            px={[0, 0, 0]}
+          >
+            <p>
+              Page not found!<br /><br />
+              <Link to="/">Take me Home</Link>
+            </p>
+          </GridItem>
         </GridItem>
-      </GridItem>
-    </GridContainer>
+      </GridContainer>
+    </Fragment>
   );
 }

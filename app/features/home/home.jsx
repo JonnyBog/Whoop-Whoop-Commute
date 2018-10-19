@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-safety-helmet';
 
 import {
   GridContainer,
@@ -16,22 +17,27 @@ import HomeForecast from './components/home-forecast/home-forecast';
  */
 export default function Home ({ data }) {
   return (
-    <GridContainer
-      mb={gridMarginBottomAll}
-    >
-      <GridItem
-        width={[1, 1/1, 1/1]}
+    <Fragment>
+      <Helmet>
+        <title>Whoop Whoop Commute - Home</title>
+      </Helmet>
+      <GridContainer
+        mb={gridMarginBottomAll}
       >
         <GridItem
-          width={[1, 1/1, 1/2]}
-          px={[0, 0, 0]}
-          mb={gridMarginBottomAll}
+          width={[1, 1/1, 1/1]}
         >
-          <HomeForecast forecastSummary={data.currentForecast[0].forecastSummary} />
+          <GridItem
+            width={[1, 1/1, 1/2]}
+            px={[0, 0, 0]}
+            mb={gridMarginBottomAll}
+          >
+            <HomeForecast forecastSummary={data.currentForecast[0].forecastSummary} />
+          </GridItem>
+          <CommuteForm />
         </GridItem>
-        <CommuteForm />
-      </GridItem>
-    </GridContainer>
+      </GridContainer>
+    </Fragment>
   );
 }
 
