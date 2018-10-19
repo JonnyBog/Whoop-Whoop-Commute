@@ -61,27 +61,27 @@ export const fonts = {
 export const typography = {
   copy: `
     font-family: ${fonts.primary};
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 16px;
+    line-height: 23px;
 
     ${mediaQueries.tablet} {
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 17px;
+      line-height: 24px;
     }
 
     ${mediaQueries.desktop} {
       font-size: 18px;
-      line-height: 22px;
+      line-height: 25px;
     }
   `,
   smallCopy: `
     font-family: ${fonts.primary};
-    font-size: 10px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 16px;
 
     ${mediaQueries.tablet} {
-      font-size: 12px;
-      line-height: 16px;
+      font-size: 13px;
+      line-height: 17px;
     }
 
     ${mediaQueries.desktop} {
@@ -91,12 +91,12 @@ export const typography = {
   `,
   heading: `
     font-family: ${fonts.primaryBold};
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 17px;
+    line-height: 19px;
 
     ${mediaQueries.tablet} {
-      font-size: 18px;
-      line-height: 22px;
+      font-size: 19px;
+      line-height: 23px;
     }
 
     ${mediaQueries.desktop} {
@@ -176,10 +176,10 @@ export const appStyles = () => injectGlobal`
 
   body {
     font-family: ${fonts.primary};
-    font-size: 14px;
+    font-size: 16px;
 
     ${mediaQueries.tablet} {
-      font-size: 16px;
+      font-size: 17px;
     }
 
     ${mediaQueries.desktop} {
