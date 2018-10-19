@@ -206,4 +206,15 @@ export const appStyles = () => injectGlobal`
       height: 500px;
     }
   }
+
+  #workStation > div:first-of-type {
+    border-color: ${colors.orange} !important;
+    box-shadow: 0 0 0 1px transparent !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: 0 0 0 1px ${colors.orange} !important;
+    }
+  }
 `;
