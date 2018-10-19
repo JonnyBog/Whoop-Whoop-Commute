@@ -2,6 +2,7 @@ const path = require('path');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const appBaseDirectory = path.join(__dirname, 'app');
 const serverBaseDirectory = path.join(__dirname, 'server');
@@ -21,7 +22,10 @@ const commonConfig = {
     new CleanWebpackPlugin(['static']),
     new RobotstxtPlugin({
       filePath: 'assets/robots.txt'
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from: `${appBaseDirectory}/assets/favicon/favicon.png`, to: `${staticDirectory}/assets` }
+    ])
   ],
   resolve: {
     extensions: ['.js', '.jsx'],

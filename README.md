@@ -9,10 +9,7 @@ In order to run the app locally in a dev environment run `npm run watch-app` and
 
 - `npm run watch-app` - runs webpack dev config
 - `npm run watch-server` - runs the express server with browser refresh
-- `npm run start-prod` - runs an express server using pm2 and prod config
-- `npm run stop-prod` - stops the express server
-- `npm run restart-prod` - restarts the express server
-- `npm run build-prod` - runs a single prod build-prod
+- `npm run start` - runs an express server on heroku
 
 ## Testing
 All shared files, actions, reducers, services and epics should be unit tested. This project uses [jest](https://facebook.github.io/jest/) for that purpose.

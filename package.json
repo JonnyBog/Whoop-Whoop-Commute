@@ -21,10 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://JonnyBoggon@bitbucket.org/JonnyBoggon/whoop-whoop-commute.git"
+    "url": "git+https://github.com/JonnyBog/Whoop-Whoop-Commute"
   },
   "author": "Jonny Boggon",
-  "homepage": "https://bitbucket.org/JonnyBoggon/whoop-whoop-commute#readme",
+  "homepage": "https://github.com/JonnyBog/Whoop-Whoop-Commute#readme",
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
@@ -40,6 +40,7 @@
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-styled-components": "^1.5.1",
     "browser-refresh": "^1.7.2",
+    "copy-webpack-plugin": "^4.5.4",
     "core-js": "^2.5.7",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -50,10 +51,10 @@
     "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.11.1",
+    "favicons-webpack-plugin": "0.0.9",
     "jest": "^23.1.0",
     "jest-junit": "^5.0.0",
     "jest-styled-components": "^5.0.1",
-    "pm2": "^3.2.2",
     "raw-loader": "^0.5.1",
     "react-test-renderer": "^16.2.0",
     "redux-mock-store": "^1.5.1",

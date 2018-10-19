@@ -10,7 +10,7 @@ const MilesPickerLabel = styled.p`
  * Renders MilesPicker component
  * @returns {JSX} react jsx
  */
-export default function MilesPicker ({ maxMiles, label, id, error, value, onChange }) {
+export default function MilesPicker ({ maxHalfMiles, label, id, error, value, onChange }) {
   return (
     <Fragment>
       <MilesPickerLabel>
@@ -20,7 +20,7 @@ export default function MilesPicker ({ maxMiles, label, id, error, value, onChan
         id={id}
         type="range"
         min="1"
-        max={maxMiles}
+        max={maxHalfMiles}
         value={value}
         onChange={onChange}
       />
@@ -29,6 +29,6 @@ export default function MilesPicker ({ maxMiles, label, id, error, value, onChan
 }
 
 MilesPicker.propTypes = {
-  maxMiles: Proptypes.number.isRequired,
+  maxHalfMiles: Proptypes.number.isRequired,
   label: Proptypes.string.isRequired
 };
