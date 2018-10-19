@@ -39,14 +39,6 @@ export default class StationPicker extends Component {
           onInputChange={input => this.handleInputChange(input)}
           noOptionsMessage={() => 'Type to search for stations'}
           placeholder="Work station"
-          styles={{
-             control: base => ({
-              ...base,
-              '&:hover': { borderColor: 'gray' },
-              border: '1px solid lightgray',
-              boxShadow: 'none'
-            })
-          }}
         />
         {
           this.props.error && <FormError>{this.props.error}</FormError>
