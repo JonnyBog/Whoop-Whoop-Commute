@@ -21,10 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://JonnyBoggon@bitbucket.org/JonnyBoggon/whoop-whoop-commute.git"
+    "url": "git+https://github.com/JonnyBog/Whoop-Whoop-Commute"
   },
   "author": "Jonny Boggon",
-  "homepage": "https://bitbucket.org/JonnyBoggon/whoop-whoop-commute#readme",
+  "homepage": "https://github.com/JonnyBog/Whoop-Whoop-Commute#readme",
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
