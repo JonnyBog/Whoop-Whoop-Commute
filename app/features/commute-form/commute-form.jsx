@@ -29,7 +29,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         initialValues={
           {
             workStation: '',
-            mileRadius: 1,
+            halfMileRadius: 1,
             lat: 51.4272,
             lng: -0.0543
           }
@@ -41,7 +41,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         onSubmit={values => {
           requestCommuteFormData({
             workStation: values.workStation,
-            mileRadius: Math.round(values.mileRadius * 1609.34),
+            halfMileRadius: Math.round(values.halfMileRadius * 804.67),
             lat: values.lat,
             lng: values.lng
           });
@@ -90,11 +90,11 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                   mb={gridMarginBottomAll}
                 >
                   <MilesPicker
-                    id="mileRadius"
-                    value={values.mileRadius}
+                    id="halfMileRadius"
+                    value={values.halfMileRadius}
                     onChange={handleChange}
-                    maxMiles={2}
-                    label="Home Radius"
+                    maxHalfMiles={4}
+                    label="Toggle radius on map"
                   />
                 </GridItem>
                 <GridItem
@@ -107,7 +107,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                       lng: values.lng
                     }}
                     onChange={handleChange}
-                    radius={values.mileRadius}
+                    radius={values.halfMileRadius}
                   />
                 </GridItem>
                 <CommuteFormSubmit

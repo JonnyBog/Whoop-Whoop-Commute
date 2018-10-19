@@ -196,10 +196,10 @@ export const appStyles = () => injectGlobal`
   }
 
   .location-picker {
-    height: 200px;
+    height: 350px;
 
     ${mediaQueries.tablet} {
-      height: 300px;
+      height: 400px;
     }
 
     ${mediaQueries.desktop} {

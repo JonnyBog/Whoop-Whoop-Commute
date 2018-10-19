@@ -26,7 +26,7 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
   return action$.ofType(COMMUTE_FORM_REQUEST)
     .switchMap(action =>
       Observable.fromPromise(apiHelper.get(
-        `https://api.tfl.gov.uk/StopPoint?stopTypes=NaptanMetroStation,NaptanRailStation&radius=${action.mileRadius}&lat=${action.lat}&lon=${action.lng}&app_id=${constants.tflAppId}&app_key=${constants.tflAppKey}`
+        `https://api.tfl.gov.uk/StopPoint?stopTypes=NaptanMetroStation,NaptanRailStation&radius=${action.halfMileRadius}&lat=${action.lat}&lon=${action.lng}&app_id=${constants.tflAppId}&app_key=${constants.tflAppKey}`
       ))
         .switchMap(response => {
           if (!response.data.stopPoints.length) {
