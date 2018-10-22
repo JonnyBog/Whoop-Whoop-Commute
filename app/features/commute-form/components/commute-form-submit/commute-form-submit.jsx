@@ -47,7 +47,7 @@ const FetchingMessage = styled.p`
 
 /**
  * Renders CommuteFormResults component
- * @param {Array} props - react props
+ * @param {Object} props - react props
  * @returns {JSX} react jsx
  */
 export default function CommuteFormSubmit ({ isFetching, error, children }) {

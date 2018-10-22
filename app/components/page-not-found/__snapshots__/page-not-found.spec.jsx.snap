@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components PageNotFound Appearance should render copy 1`] = `
+exports[`Components PageNotFound Appearance should render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PageNotFound
@@ -19,27 +19,258 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <Link
-        replace={false}
-        to="/"
-      >
-        Take me Home
-      </Link>,
+      "children": Array [
+        <HelmetWrapper
+          defer={true}
+          encodeSpecialCharacters={true}
+        >
+          <title>
+            Whoop Whoop Commute - Page not found
+          </title>
+        </HelmetWrapper>,
+        <GridContainer>
+          <GridItem
+            width={
+              Array [
+                1,
+                1,
+                1,
+              ]
+            }
+          >
+            <GridItem
+              px={
+                Array [
+                  0,
+                  0,
+                  0,
+                ]
+              }
+              width={
+                Array [
+                  1,
+                  1,
+                  0.5,
+                ]
+              }
+            >
+              <p>
+                Page not found!
+                <br />
+                <br />
+                <Link
+                  replace={false}
+                  to="/"
+                >
+                  Take me Home
+                </Link>
+              </p>
+            </GridItem>
+          </GridItem>
+        </GridContainer>,
+      ],
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Take me Home",
-        "replace": false,
-        "to": "/",
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <title>
+            Whoop Whoop Commute - Page not found
+          </title>,
+          "defer": true,
+          "encodeSpecialCharacters": true,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Whoop Whoop Commute - Page not found",
+          },
+          "ref": null,
+          "rendered": "Whoop Whoop Commute - Page not found",
+          "type": "title",
+        },
+        "type": [Function],
       },
-      "ref": null,
-      "rendered": "Take me Home",
-      "type": [Function],
-    },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <GridItem
+            width={
+              Array [
+                1,
+                1,
+                1,
+              ]
+            }
+          >
+            <GridItem
+              px={
+                Array [
+                  0,
+                  0,
+                  0,
+                ]
+              }
+              width={
+                Array [
+                  1,
+                  1,
+                  0.5,
+                ]
+              }
+            >
+              <p>
+                Page not found!
+                <br />
+                <br />
+                <Link
+                  replace={false}
+                  to="/"
+                >
+                  Take me Home
+                </Link>
+              </p>
+            </GridItem>
+          </GridItem>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <GridItem
+              px={
+                Array [
+                  0,
+                  0,
+                  0,
+                ]
+              }
+              width={
+                Array [
+                  1,
+                  1,
+                  0.5,
+                ]
+              }
+            >
+              <p>
+                Page not found!
+                <br />
+                <br />
+                <Link
+                  replace={false}
+                  to="/"
+                >
+                  Take me Home
+                </Link>
+              </p>
+            </GridItem>,
+            "width": Array [
+              1,
+              1,
+              1,
+            ],
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <p>
+                Page not found!
+                <br />
+                <br />
+                <Link
+                  replace={false}
+                  to="/"
+                >
+                  Take me Home
+                </Link>
+              </p>,
+              "px": Array [
+                0,
+                0,
+                0,
+              ],
+              "width": Array [
+                1,
+                1,
+                0.5,
+              ],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Page not found!",
+                  <br />,
+                  <br />,
+                  <Link
+                    replace={false}
+                    to="/"
+                  >
+                    Take me Home
+                  </Link>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Page not found!",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Take me Home",
+                    "replace": false,
+                    "to": "/",
+                  },
+                  "ref": null,
+                  "rendered": "Take me Home",
+                  "type": [Function],
+                },
+              ],
+              "type": "p",
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
     "type": Symbol(react.fragment),
   },
   Symbol(enzyme.__nodes__): Array [
@@ -48,27 +279,258 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": <Link
-          replace={false}
-          to="/"
-        >
-          Take me Home
-        </Link>,
+        "children": Array [
+          <HelmetWrapper
+            defer={true}
+            encodeSpecialCharacters={true}
+          >
+            <title>
+              Whoop Whoop Commute - Page not found
+            </title>
+          </HelmetWrapper>,
+          <GridContainer>
+            <GridItem
+              width={
+                Array [
+                  1,
+                  1,
+                  1,
+                ]
+              }
+            >
+              <GridItem
+                px={
+                  Array [
+                    0,
+                    0,
+                    0,
+                  ]
+                }
+                width={
+                  Array [
+                    1,
+                    1,
+                    0.5,
+                  ]
+                }
+              >
+                <p>
+                  Page not found!
+                  <br />
+                  <br />
+                  <Link
+                    replace={false}
+                    to="/"
+                  >
+                    Take me Home
+                  </Link>
+                </p>
+              </GridItem>
+            </GridItem>
+          </GridContainer>,
+        ],
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Take me Home",
-          "replace": false,
-          "to": "/",
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <title>
+              Whoop Whoop Commute - Page not found
+            </title>,
+            "defer": true,
+            "encodeSpecialCharacters": true,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Whoop Whoop Commute - Page not found",
+            },
+            "ref": null,
+            "rendered": "Whoop Whoop Commute - Page not found",
+            "type": "title",
+          },
+          "type": [Function],
         },
-        "ref": null,
-        "rendered": "Take me Home",
-        "type": [Function],
-      },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <GridItem
+              width={
+                Array [
+                  1,
+                  1,
+                  1,
+                ]
+              }
+            >
+              <GridItem
+                px={
+                  Array [
+                    0,
+                    0,
+                    0,
+                  ]
+                }
+                width={
+                  Array [
+                    1,
+                    1,
+                    0.5,
+                  ]
+                }
+              >
+                <p>
+                  Page not found!
+                  <br />
+                  <br />
+                  <Link
+                    replace={false}
+                    to="/"
+                  >
+                    Take me Home
+                  </Link>
+                </p>
+              </GridItem>
+            </GridItem>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <GridItem
+                px={
+                  Array [
+                    0,
+                    0,
+                    0,
+                  ]
+                }
+                width={
+                  Array [
+                    1,
+                    1,
+                    0.5,
+                  ]
+                }
+              >
+                <p>
+                  Page not found!
+                  <br />
+                  <br />
+                  <Link
+                    replace={false}
+                    to="/"
+                  >
+                    Take me Home
+                  </Link>
+                </p>
+              </GridItem>,
+              "width": Array [
+                1,
+                1,
+                1,
+              ],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <p>
+                  Page not found!
+                  <br />
+                  <br />
+                  <Link
+                    replace={false}
+                    to="/"
+                  >
+                    Take me Home
+                  </Link>
+                </p>,
+                "px": Array [
+                  0,
+                  0,
+                  0,
+                ],
+                "width": Array [
+                  1,
+                  1,
+                  0.5,
+                ],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Page not found!",
+                    <br />,
+                    <br />,
+                    <Link
+                      replace={false}
+                      to="/"
+                    >
+                      Take me Home
+                    </Link>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Page not found!",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "br",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "br",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Take me Home",
+                      "replace": false,
+                      "to": "/",
+                    },
+                    "ref": null,
+                    "rendered": "Take me Home",
+                    "type": [Function],
+                  },
+                ],
+                "type": "p",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
       "type": Symbol(react.fragment),
     },
   ],

@@ -31,7 +31,7 @@ const WeatherForecast = styled.p`
 
 /**
  * Renders HomeForecast component
- * @param {Array} props - react props
+ * @param {Object} props - react props
  * @returns {JSX} react jsx
  */
 export default function HomeForecast ({ forecastSummary }) {

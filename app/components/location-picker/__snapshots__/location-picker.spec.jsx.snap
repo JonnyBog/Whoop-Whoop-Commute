@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components LocationPicker Appearance should render 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  >
+    <div
+      className="location-picker"
+    />
+    <div />
+  </div>,
+  <input
+    id="lat"
+    onClick={[MockFunction]}
+    type="hidden"
+    value={20}
+  />,
+  <input
+    id="lng"
+    onClick={[MockFunction]}
+    type="hidden"
+    value={20}
+  />,
+]
+`;

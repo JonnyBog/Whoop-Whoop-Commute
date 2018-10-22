@@ -11,12 +11,14 @@ import {
 } from 'base-styles';
 
 import { StationPicker } from 'features';
-import MilesPicker from 'components/miles-picker/miles-picker';
+import RangePicker from 'components/range-picker/range-picker';
 import LocationPicker from 'components/location-picker/location-picker';
 import FormError from 'components/form-error/form-error';
 import CommuteFormIntro from './components/commute-form-intro/commute-form-intro';
 import CommuteFormSubmit from './components/commute-form-submit/commute-form-submit';
 import CommuteFormResults from './components/commute-form-results/commute-form-results';
+
+const halfMileInMeters = 804.67;
 
 /**
  * Commute Form
@@ -41,7 +43,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         onSubmit={values => {
           requestCommuteFormData({
             workStation: values.workStation,
-            halfMileRadius: Math.round(values.halfMileRadius * 804.67),
+            halfMileRadius: Math.round(values.halfMileRadius * halfMileInMeters),
             lat: values.lat,
             lng: values.lng
           });
@@ -89,11 +91,11 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                   px={[0, 0, 0]}
                   mb={gridMarginBottomAll}
                 >
-                  <MilesPicker
+                  <RangePicker
                     id="halfMileRadius"
                     value={values.halfMileRadius}
                     onChange={handleChange}
-                    maxHalfMiles={4}
+                    max={4}
                     label="Toggle radius on map"
                   />
                 </GridItem>
@@ -107,7 +109,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                       lng: values.lng
                     }}
                     onChange={handleChange}
-                    radius={values.halfMileRadius}
+                    radius={values.halfMileRadius * halfMileInMeters}
                   />
                 </GridItem>
                 <CommuteFormSubmit

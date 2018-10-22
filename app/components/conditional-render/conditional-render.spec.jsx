@@ -70,21 +70,9 @@ describe('Components', () => {
         expect(tree).toMatchSnapshot();
       });
 
-      it('should render default loader when isFetching is true and loader is not recieved', () => {
+      it('should render default loader when isFetching is true and loader is not received', () => {
         const wrapper = createShallowWrapper();
         expect(wrapper.find('LoaderDefault').length).toBe(1);
-      });
-
-      it('should render correct loader when isFetching is true and loader is recieved', () => {
-        const updatedProps = Object.assign(
-          {},
-          props,
-          {
-            loader: 'loaderOne'
-          }
-        );
-        const wrapper = createMountWrapper(updatedProps);
-        expect(wrapper.find('LoaderOne').length).toBe(1);
       });
 
       it('should call the loaded prop when isFetching is false and there is data', () => {

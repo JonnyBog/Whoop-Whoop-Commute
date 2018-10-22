@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import ReactLocationPicker from 'react-location-picker';
 
 import {
@@ -6,6 +7,19 @@ import {
 } from 'base-styles';
 
 export default class LocationPicker extends Component {
+  /**
+   * propTypes
+   * @type {Object}
+   */
+  static propTypes = {
+    value: PropTypes.shape({
+      lat: PropTypes.number,
+      lng: PropTypes.number
+    }).isRequired,
+    radius: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired
+  };
+
   /**
    * constructor
    * @param {Object} props - react props
@@ -43,7 +57,7 @@ export default class LocationPicker extends Component {
           mapElement={<div className="location-picker" />}
           defaultPosition={this.state.defaultPosition}
           onChange={this.handleChange}
-          radius={this.props.radius * 1609.34}
+          radius={this.props.radius}
           zoom={11}
           circleOptions={{
             strokeColor: colors.orange,

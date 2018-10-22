@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {
@@ -12,7 +13,7 @@ const StyledFormError = styled.p`
 
 /**
  * Renders FormError component
- * @param {Array} props - react props
+ * @param {Object} props - react props
  * @returns {JSX} react jsx
  */
 export default function FormError ({ children }) {
@@ -22,3 +23,7 @@ export default function FormError ({ children }) {
     </StyledFormError>
   );
 }
+
+FormError.propTypes = {
+  children: PropTypes.shape().isRequired
+};

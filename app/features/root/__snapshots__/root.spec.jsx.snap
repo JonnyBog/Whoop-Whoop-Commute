@@ -2,6 +2,7 @@
 
 exports[`Features Root component Appearance should render correctly 1`] = `
 <React.Fragment>
+  <Header />
   <Switch>
     <Switch>
       <Route
