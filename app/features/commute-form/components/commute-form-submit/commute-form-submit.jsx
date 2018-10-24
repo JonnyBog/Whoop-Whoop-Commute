@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {
@@ -65,3 +66,9 @@ export default function CommuteFormSubmit ({ isFetching, error, children }) {
     </Fragment>
   );
 }
+
+CommuteFormSubmit.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired
+};

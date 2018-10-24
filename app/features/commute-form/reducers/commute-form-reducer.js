@@ -21,18 +21,20 @@ export default function (state = defaultState, action) {
     case COMMUTE_FORM_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
-        error: null,
-        data: null
+        data: null,
+        error: null
       });
     case COMMUTE_FORM_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        data: action.response
+        data: action.response.data,
+        error: null
       });
     case COMMUTE_FORM_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        error: action.response
+        data: null,
+        error: action.response.statusText
       });
     default:
       return state;
