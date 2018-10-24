@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -14,9 +13,9 @@ import { StationPicker } from 'features';
 import RangePicker from 'components/range-picker/range-picker';
 import LocationPicker from 'components/location-picker/location-picker';
 import FormError from 'components/form-error/form-error';
-import CommuteFormIntro from './components/commute-form-intro/commute-form-intro';
-import CommuteFormSubmit from './components/commute-form-submit/commute-form-submit';
-import CommuteFormResults from './components/commute-form-results/commute-form-results';
+import CommuteFormIntro from 'features/commute-form/components/commute-form-intro/commute-form-intro';
+import CommuteFormSubmit from 'features/commute-form/components/commute-form-submit/commute-form-submit';
+import CommuteFormResults from 'features/commute-form/components/commute-form-results/commute-form-results';
 
 const halfMileInMeters = 804.67;
 
@@ -144,10 +143,24 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
 CommuteForm.propTypes = {
   requestCommuteFormData: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape()),
-  error: PropTypes.string
+  isFetching: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  values: PropTypes.arrayOf(PropTypes.string),
+  errors: PropTypes.arrayOf(PropTypes.string),
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  setFieldValue: PropTypes.func,
+  submitCount: PropTypes.func,
+  touched: PropTypes.arrayOf(PropTypes.shape()).isRequired
 };
 
 CommuteForm.defaultProps = {
   data: {},
-  error: ''
+  error: '',
+  values: [],
+  errors: [],
+  handleChange: () => {},
+  handleSubmit: () => {},
+  setFieldValue: () => {},
+  submitCount: () => {}
 };

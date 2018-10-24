@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connectToStoreHelper } from 'lib';
@@ -6,14 +6,24 @@ import { requestCommuteFormData } from 'features/commute-form/actions/commute-fo
 
 import CommuteForm from 'features/commute-form/commute-form';
 
-const CommuteFormContainer = props => (
-  <CommuteForm
-    isFetching={props.commuteForm.isFetching}
-    data={props.commuteForm.data}
-    error={props.commuteForm.error}
-    requestCommuteFormData={props.requestCommuteFormData}
-  />
-);
+// eslint-disable-next-line react/prefer-stateless-function
+class CommuteFormContainer extends Component {
+  /**
+   * react render
+   * @returns {JSX} - JSX
+   */
+  render () {
+    return (
+      <CommuteForm
+        isFetching={this.props.commuteForm.isFetching}
+        data={this.props.commuteForm.data}
+        error={this.props.commuteForm.error}
+        requestCommuteFormData={this.props.requestCommuteFormData}
+      />
+    );
+  }
+}
+// keeps container tests consistent to be written as class
 
 CommuteFormContainer.propTypes = {
   commuteForm: PropTypes.shape({

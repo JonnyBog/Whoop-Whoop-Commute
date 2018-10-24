@@ -1,65 +1,102 @@
 import { ActionsObservable } from 'redux-observable';
 
 import {
-  HOME_PAGE_REQUEST,
-  HOME_PAGE_SUCCESS,
-  HOME_PAGE_FAILURE
-} from 'features/home/actions/home-actions';
-import fetchHomeData from 'features/home/epics/home-epic';
+  COMMUTE_FORM_REQUEST,
+  COMMUTE_FORM_SUCCESS,
+  COMMUTE_FORM_FAILURE
+} from 'features/commute-form/actions/commute-form-actions';
+import fetchCommuteFormData from 'features/commute-form/epics/commute-form-epic';
 
 describe('Features', () => {
-  describe('Home epic', () => {
+  describe('Commute Form epic', () => {
     const action$ = ActionsObservable.of(
       {
-        type: HOME_PAGE_REQUEST
+        type: COMMUTE_FORM_REQUEST
       }
     );
 
-    it('dispatches success action when successful', () => {
+    it('dispatches success action when successful', done => {
       const dependencies = {
         apiHelper: {
-          get: jest.fn(() => new Promise(resolve => resolve({ test: 'test' })))
+          get: jest.fn(() => new Promise(resolve => resolve({
+            response: {
+              data: {
+                stopPoints: [
+                  {
+                    icsCode: 'test'
+                  }
+                ]
+              }
+            }
+          })))
         }
       };
       const expectedOutputActions = [
         {
-          type: HOME_PAGE_SUCCESS,
+          type: COMMUTE_FORM_SUCCESS,
           data: {
             test: 'test'
           }
         }
       ];
 
-      fetchHomeData(action$, {}, dependencies)
+      fetchCommuteFormData(action$, {}, dependencies)
         .toArray()
         .subscribe(actualOutputActions => {
           expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
         });
     });
 
-    it('dispatches failed action when unsuccessful', () => {
+    // it('dispatches failed with no stations message when there are no stations', done => {
+    //   const dependencies = {
+    //     apiHelper: {
+    //       get: jest.fn(() => new Promise(resolve => resolve({
+    //         response: {
+    //           data: {
+    //             stopPoints: null
+    //           }
+    //         }
+    //       })))
+    //     }
+    //   };
+    //   const expectedOutputActions = [
+    //     {
+    //       type: COMMUTE_FORM_SUCCESS,
+    //       response: 'There are no stations in this area.'
+    //     }
+    //   ];
+
+    //   fetchCommuteFormData(action$, {}, dependencies)
+    //     .toArray()
+    //     .subscribe(actualOutputActions => {
+    //       expect(actualOutputActions).toEqual(expectedOutputActions);
+    //       done();
+    //     });
+    // });
+
+    it('dispatches generic fail if promise is rejected', done => {
       const dependencies = {
         apiHelper: {
           get: jest.fn(() =>
             new Promise((resolve, reject) =>
-              reject(new Error({
-                response: 'error'
-              }))
+              reject(new Error())
             )
           )
         }
       };
       const expectedOutputActions = [
         {
-          type: HOME_PAGE_FAILURE,
-          error: 'error'
+          type: COMMUTE_FORM_FAILURE,
+          response: 'Oops, something has gone wrong. There might be an issue with a station in this area.'
         }
       ];
 
-      fetchHomeData(action$, {}, dependencies)
+      fetchCommuteFormData(action$, {}, dependencies)
         .toArray()
         .subscribe(actualOutputActions => {
           expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
         });
     });
   });

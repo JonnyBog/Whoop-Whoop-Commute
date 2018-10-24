@@ -1,23 +1,30 @@
 import React from 'react';
 import rendererShallow from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
 
-import Home from 'features/home/home';
+import CommuteForm from 'features/commute-form/commute-form';
 
 describe('Features', () => {
-  describe('Home component', () => {
+  describe('Commute Form component', () => {
     it('should export a function', () => {
-      expect(Home).toBeDefined();
+      expect(CommuteForm).toBeDefined();
     });
 
     let props;
 
     beforeEach(() => {
       props = {
-        data: [
-          {
-            title: 'test'
-          }
-        ]
+        requestCommuteFormData: jest.fn(),
+        data: [],
+        isFetching: false,
+        error: '',
+        values: [],
+        errors: [],
+        handleChange: jest.fn(),
+        handleSubmit: jest.fn(),
+        setFieldValue: jest.fn(),
+        submitCount: jest.fn(),
+        touched: []
       };
     });
 
@@ -34,13 +41,39 @@ describe('Features', () => {
       const shallowRenderer = rendererShallow.createRenderer();
 
       return shallowRenderer.render(
-        <Home {...updatedProps} />
+        <CommuteForm {...updatedProps} />
       );
     }
 
-    it('should return content', () => {
-      const tree = createShallowRenderTree();
-      expect(tree).toMatchSnapshot();
+    /**
+     * createShallowWrapper
+     * @param   {Object} updatedProps - defaults to props
+     * @returns {JSX} shallow component
+     */
+    function createShallowWrapper (updatedProps = props) {
+      return shallow(
+        <CommuteForm {...updatedProps} />
+      );
+    }
+
+    describe('Appearance', () => {
+      it('should render', () => {
+        const tree = createShallowRenderTree();
+        expect(tree).toMatchSnapshot();
+      });
+
+      it('should show error when there is an error', () => {
+        const updatedProps = Object.assign(
+          {},
+          props,
+          {
+            error: 'test error'
+          }
+        );
+        const wrapper = createShallowWrapper(updatedProps);
+
+        expect(wrapper.find('FormError')).toHaveLength(1);
+      });
     });
   });
 });
