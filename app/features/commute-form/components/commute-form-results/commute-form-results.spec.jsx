@@ -1,12 +1,33 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import LoaderOne from 'components/loader-one/loader-one';
+import CommuteFormResults from 'features/commute-form/components/commute-form-results/commute-form-results';
 
-describe('Components', () => {
-  describe('LoaderOne', () => {
+describe('Features', () => {
+  describe('Commute Form Results Component', () => {
     it('should export', () => {
-      expect(LoaderOne).toBeDefined();
+      expect(CommuteFormResults).toBeDefined();
+    });
+
+    let props;
+
+    beforeEach(() => {
+      props = {
+        storeItem: {
+          data: null,
+          error: null,
+          isFetching: true
+        },
+        loaded: jest.fn(),
+        loader: undefined,
+        history: {
+          replace: jest.fn()
+        }
+      };
+    });
+
+    afterEach(() => {
+      props = null;
     });
 
     /**
@@ -15,7 +36,7 @@ describe('Components', () => {
      */
     function createRenderTree () {
       return renderer.create(
-        <LoaderOne />
+        <CommuteFormResults data={data} />
       ).toJSON();
     }
 
