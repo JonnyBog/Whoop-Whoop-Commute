@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import LoaderOne from 'components/loader-one/loader-one';
+import FormError from 'components/form-error/form-error';
 
 describe('Components', () => {
-  describe('LoaderOne', () => {
+  describe('FormError', () => {
     it('should export', () => {
-      expect(LoaderOne).toBeDefined();
+      expect(FormError).toBeDefined();
     });
 
     /**
@@ -15,7 +15,7 @@ describe('Components', () => {
      */
     function createRenderTree () {
       return renderer.create(
-        <LoaderOne />
+        <FormError />
       ).toJSON();
     }
 

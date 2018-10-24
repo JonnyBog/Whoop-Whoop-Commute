@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components Header Appearance should render 1`] = `
+<div
+  className="sc-bwzfXH liBCIH sc-bdVaJa ldinxp sc-bdVaJa ldinxp"
+>
+  <div
+    className="sc-bdVaJa jwmcyC"
+  >
+    <h1
+      className="header__Title-sc-17ykvny-0 XOKSO"
+    >
+      <div
+        className="header__TitleWhoop-sc-17ykvny-1 joDEFi"
+      >
+        Wh
+        <span
+          className="header__TitleWhoopOs-sc-17ykvny-2 jCPFPg"
+        >
+          oo
+        </span>
+        p Wh
+        <span
+          className="header__TitleWhoopOs-sc-17ykvny-2 jCPFPg"
+        >
+          oo
+        </span>
+        p
+      </div>
+      <div
+        className="header__TitleCommute-sc-17ykvny-3 jtkWfn"
+      >
+        Commute
+      </div>
+    </h1>
+    <p
+      className="header__Message-sc-17ykvny-4 iuekhx"
+    >
+      This is a development app. Git repo 
+      <a
+        href="https://github.com/JonnyBog/Whoop-Whoop-Commute"
+      >
+        here
+      </a>
+    </p>
+  </div>
+</div>
+`;

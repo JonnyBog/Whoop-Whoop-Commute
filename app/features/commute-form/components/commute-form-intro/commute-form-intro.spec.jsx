@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import LoaderOne from 'components/loader-one/loader-one';
+import CommuteFormIntro from 'features/commute-form/components/commute-form-intro/commute-form-intro';
 
-describe('Components', () => {
-  describe('LoaderOne', () => {
+describe('Features', () => {
+  describe('Commute Form Intro Component', () => {
     it('should export', () => {
-      expect(LoaderOne).toBeDefined();
+      expect(CommuteFormIntro).toBeDefined();
     });
 
     /**
@@ -15,7 +15,7 @@ describe('Components', () => {
      */
     function createRenderTree () {
       return renderer.create(
-        <LoaderOne />
+        <CommuteFormIntro />
       ).toJSON();
     }
 

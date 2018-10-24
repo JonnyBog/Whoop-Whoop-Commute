@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Features Commute Form Intro Component Appearance should render 1`] = `
+<p
+  className="commute-form-intro__CommuteFormIntroCopy-n5yvyc-0 bOrnia"
+>
+  Pick a work station and an area to travel from on the map - then see the different commutes from that area!
+</p>
+`;

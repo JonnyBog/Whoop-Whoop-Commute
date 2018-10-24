@@ -17,13 +17,14 @@ describe('Features', () => {
 
     /**
      * createShallowRenderTree
+     * @param {Object} updatedProps - defaults to props
      * @returns {JSX} shallow renderer component
      */
-    function createShallowRenderTree () {
+    function createShallowRenderTree (updatedProps = props) {
       const shallowRenderer = rendererShallow.createRenderer();
 
       return shallowRenderer.render(
-        <Root {...props} />
+        <Root {...updatedProps} />
       );
     }
 

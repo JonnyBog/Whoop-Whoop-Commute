@@ -12,7 +12,8 @@ import {
 
 const constants = {
   tflAppId: 'b4aa26bb',
-  tflAppKey: '938e3b49ed68cab0d4b0191d4aa914aa'
+  tflAppKey: '938e3b49ed68cab0d4b0191d4aa914aa',
+  genericFail: 'Oops, something has gone wrong. There might be an issue with a station in this area.'
 };
 
 /**
@@ -36,6 +37,7 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
           return Observable.forkJoin(
             response.data.stopPoints
               .filter(stopPoint => stopPoint.icsCode && stopPoint.icsCode !== action.workStation)
+              .filter(stopPoint => !stopPoint.commonName.includes('International'))
               .map(stopPoint =>
                 Observable.fromPromise(
                   apiHelper.get(
@@ -47,9 +49,10 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
             .map(responses => {
               const responseData = [];
 
-              responses.forEach(journeyResponse => {
-                responseData.push(journeyResponse.data.journeys[0]);
-              });
+              responses
+                .forEach(journeyResponse => {
+                  responseData.push(journeyResponse.data.journeys[0]);
+                });
 
               return receiveCommuteFormData(responseData);
             })
@@ -58,7 +61,7 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
                 const errorMessage =
                   error.response && error.response.data.toLocationDisambiguation.matchStatus === 'empty'
                     ? 'Please enter a valid station for your work station'
-                    : error.message;
+                    : constants.genericFail;
 
                 return Observable.of(failedCommuteFormRequest(errorMessage));
               })
@@ -68,7 +71,7 @@ export default function fetchCommuteFormData (action$, store, { apiHelper }) {
           const errorMessage =
             error.message === 'Network Error'
               ? 'There must be too many stations in this area!'
-              : error.message;
+              : constants.genericFail;
 
           return Observable.of(failedCommuteFormRequest(errorMessage));
         }));

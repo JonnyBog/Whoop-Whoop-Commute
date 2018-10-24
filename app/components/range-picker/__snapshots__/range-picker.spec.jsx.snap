@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components RangePicker Appearance should render 1`] = `
+Array [
+  <p
+    className="range-picker__RangePickerLabel-dqh1ap-0 hJQUTf"
+  >
+    test
+  </p>,
+  <input
+    id="test"
+    max={5}
+    min="1"
+    onChange={[MockFunction]}
+    type="range"
+    value="test"
+  />,
+]
+`;

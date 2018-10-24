@@ -1,28 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import CommuteFormResults from 'features/commute-form/components/commute-form-results/commute-form-results';
+import RangePicker from 'components/range-picker/range-picker';
 
-describe('Features', () => {
-  describe('Commute Form Results Component', () => {
+describe('Components', () => {
+  describe('RangePicker', () => {
     it('should export', () => {
-      expect(CommuteFormResults).toBeDefined();
+      expect(RangePicker).toBeDefined();
     });
 
     let props;
 
     beforeEach(() => {
       props = {
-        storeItem: {
-          data: null,
-          error: null,
-          isFetching: true
-        },
-        loaded: jest.fn(),
-        loader: undefined,
-        history: {
-          replace: jest.fn()
-        }
+        max: 5,
+        label: 'test',
+        id: 'test',
+        value: 'test',
+        onChange: jest.fn()
       };
     });
 
@@ -32,11 +27,12 @@ describe('Features', () => {
 
     /**
      * createRenderTree
+     * @param   {Object} updatedProps - defaults to props
      * @returns {JSX} component tree
      */
-    function createRenderTree () {
+    function createRenderTree (updatedProps = props) {
       return renderer.create(
-        <CommuteFormResults data={data} />
+        <RangePicker {...updatedProps} />
       ).toJSON();
     }
 

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {
@@ -60,7 +61,7 @@ const JourneyCopy = styled.p`
 
 /**
  * Renders CommuteFormResults component
- * @param {Array} props - react props
+ * @param {Object} props - react props
  * @returns {JSX} react jsx
  */
 export default function CommuteFormResults ({ data }) {
@@ -68,12 +69,17 @@ export default function CommuteFormResults ({ data }) {
     <Fragment>
       {
         data
+          .filter((element, index, array) =>
+            index === array.findIndex(journey => (
+              journey.legs[0].departurePoint.commonName === element.legs[0].departurePoint.commonName
+            ))
+          )
           .sort((a, b) => a.duration - b.duration)
           .map(journey => {
             const { commonName } = journey.legs[0].departurePoint;
 
             return (
-              <ResultWrapper key={journey.legs[0].instruction.summary}>
+              <ResultWrapper key={commonName}>
                 <ResultTitle>
                   {commonName}
                 </ResultTitle>
@@ -96,3 +102,7 @@ export default function CommuteFormResults ({ data }) {
     </Fragment>
   );
 }
+
+CommuteFormResults.propTypes = {
+  data: PropTypes.shape({}).isRequired
+};

@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import LoaderOne from 'components/loader-one/loader-one';
+import Header from 'components/header/header';
 
 describe('Components', () => {
-  describe('LoaderOne', () => {
+  describe('Header', () => {
     it('should export', () => {
-      expect(LoaderOne).toBeDefined();
+      expect(Header).toBeDefined();
     });
 
     /**
@@ -15,7 +15,7 @@ describe('Components', () => {
      */
     function createRenderTree () {
       return renderer.create(
-        <LoaderOne />
+        <Header />
       ).toJSON();
     }
 

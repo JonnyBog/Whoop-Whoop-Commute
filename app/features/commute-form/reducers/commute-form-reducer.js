@@ -1,7 +1,6 @@
 import {
   COMMUTE_FORM_REQUEST,
   COMMUTE_FORM_SUCCESS,
-  COMMUTE_FORM_NETWORK_ERROR,
   COMMUTE_FORM_FAILURE
 } from 'features/commute-form/actions/commute-form-actions';
 

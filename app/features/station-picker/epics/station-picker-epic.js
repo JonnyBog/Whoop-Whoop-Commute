@@ -34,7 +34,7 @@ export default function fetchStationPickerData (action$, store, { apiHelper }) {
                   value: match.icsId,
                   label: match.name
                 };
-            });
+              });
 
           return receiveStationPickerData({
             data: {
