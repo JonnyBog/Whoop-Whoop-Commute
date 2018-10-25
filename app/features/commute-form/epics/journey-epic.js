@@ -10,7 +10,7 @@ import {
 } from 'features/commute-form/actions/commute-form-actions';
 
 /* eslint-disable import/prefer-default-export */
-// disabled for testing purposes
+// disabled for testing - needs to be mocked in another epic
 /**
  * fetchJourneyData
  * @param {Array} journeys - stoppoints
