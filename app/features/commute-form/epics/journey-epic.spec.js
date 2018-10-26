@@ -21,7 +21,7 @@ describe('Features', () => {
 
       action = {
         type: COMMUTE_FORM_REQUEST,
-        workStation: 'test'
+        workStation: 'test workstation'
       };
 
       constants = {
@@ -43,7 +43,8 @@ describe('Features', () => {
           data: {
             journeys: [
               {
-                test: 'test journey'
+                icsCode: 'test ics',
+                commonName: 'test name'
               }
             ]
           }
@@ -55,9 +56,117 @@ describe('Features', () => {
           type: COMMUTE_FORM_SUCCESS,
           response: [
             {
-              test: 'test journey'
+              icsCode: 'test ics',
+              commonName: 'test name'
             }
           ]
+        }
+      ];
+
+      journeyEpic.fetchJourneyData(journeys, action, apiHelper, constants)
+        .toArray()
+        .subscribe(actualOutputActions => {
+          expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
+        });
+    });
+
+    it('dispatches success action when successful and filters out international stations', done => {
+      const apiHelper = {
+        get: jest.fn(() => new Promise(resolve => resolve({
+          data: {
+            journeys: [
+              {
+                icsCode: 'test ics',
+                commonName: 'test name'
+              },
+              {
+                icsCode: 'test ics',
+                commonName: 'test name international'
+              }
+            ]
+          }
+        })))
+      };
+
+      const expectedOutputActions = [
+        {
+          type: COMMUTE_FORM_SUCCESS,
+          response: [
+            {
+              icsCode: 'test ics',
+              commonName: 'test name'
+            }
+          ]
+        }
+      ];
+
+      journeyEpic.fetchJourneyData(journeys, action, apiHelper, constants)
+        .toArray()
+        .subscribe(actualOutputActions => {
+          expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
+        });
+    });
+
+    it('dispatches success action when successful and filters out station where common name is the same as work station name', done => {
+      const apiHelper = {
+        get: jest.fn(() => new Promise(resolve => resolve({
+          data: {
+            journeys: [
+              {
+                icsCode: 'test ics',
+                commonName: 'test name'
+              },
+              {
+                icsCode: 'test ics',
+                commonName: 'test workstation'
+              }
+            ]
+          }
+        })))
+      };
+
+      const expectedOutputActions = [
+        {
+          type: COMMUTE_FORM_SUCCESS,
+          response: [
+            {
+              icsCode: 'test ics',
+              commonName: 'test name'
+            }
+          ]
+        }
+      ];
+
+      journeyEpic.fetchJourneyData(journeys, action, apiHelper, constants)
+        .toArray()
+        .subscribe(actualOutputActions => {
+          expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
+        });
+    });
+
+    it('dispatches failure and has message for empty match status', done => {
+      const apiHelper = {
+        get: jest.fn(() => new Promise((resolve, reject) =>
+          /* eslint-disable prefer-promise-reject-errors */
+          reject(({
+            response: {
+              data: {
+                toLocationDisambiguation: {
+                  matchStatus: 'empty'
+                }
+              }
+            }
+          }))
+        ))
+      };
+
+      const expectedOutputActions = [
+        {
+          type: COMMUTE_FORM_FAILURE,
+          response: 'Please enter a valid station for your work station'
         }
       ];
 

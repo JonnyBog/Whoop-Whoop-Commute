@@ -32,7 +32,7 @@ describe('Features', () => {
         }
       };
       const result = commuteFormReducer({}, { type: COMMUTE_FORM_SUCCESS, response });
-      expect(result).toEqual({ isFetching: false, data: response, error: null });
+      expect(result).toEqual({ isFetching: false, data: response });
     });
 
     it('should handle COMMUTE_FORM_FAILURE', () => {
@@ -40,7 +40,7 @@ describe('Features', () => {
         statusText: 'error'
       };
       const result = commuteFormReducer({}, { type: COMMUTE_FORM_FAILURE, response });
-      expect(result).toEqual({ isFetching: false, data: null, error: response });
+      expect(result).toEqual({ isFetching: false, error: response });
     });
   });
 });

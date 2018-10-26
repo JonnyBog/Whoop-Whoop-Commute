@@ -6,7 +6,8 @@ import {
 
 const defaultState = {
   isFetching: false,
-  data: null
+  data: null,
+  error: null
 };
 
 /**
@@ -19,7 +20,9 @@ export default function (state = defaultState, action) {
   switch (action.type) {
     case HOME_PAGE_REQUEST:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
+        data: null,
+        error: null
       });
     case HOME_PAGE_SUCCESS:
       return Object.assign({}, state, {
