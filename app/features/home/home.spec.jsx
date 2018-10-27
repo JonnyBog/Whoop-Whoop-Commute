@@ -15,7 +15,7 @@ describe('Features', () => {
       props = {
         data: [
           {
-            title: 'test'
+            test: 'test'
           }
         ]
       };
