@@ -114,7 +114,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                 </GridItem>
                 <CommuteFormSubmit
                   isFetching={isFetching}
-                  error={errors.workStation ? touched.workStation : ''}
+                  error={errors.workStation && touched.workStation ? errors.workStation : ''}
                 >
                   {
                     !isFetching
