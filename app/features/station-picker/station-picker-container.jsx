@@ -9,6 +9,29 @@ import StationPicker from 'features/station-picker/station-picker';
 // eslint-disable-next-line react/prefer-stateless-function
 class StationPickerContainer extends Component {
   /**
+   * propTypes
+   * @type {Object}
+   */
+  static propTypes = {
+    stationPicker: PropTypes.shape({
+      data: PropTypes.shape()
+    }).isRequired,
+    requestStationPickerData: PropTypes.func.isRequired,
+    setFieldValue: PropTypes.func,
+    id: PropTypes.string.isRequired,
+    error: PropTypes.string
+  };
+
+  /**
+   * defaultProps
+   * @type {Object}
+   */
+  static defaultProps = {
+    setFieldValue: () => {},
+    error: ''
+  };
+
+  /**
    * react render
    * @returns {JSX} - JSX
    */
@@ -16,22 +39,15 @@ class StationPickerContainer extends Component {
     return (
       <StationPicker
         data={this.props.stationPicker.data}
+        error={this.props.error}
         requestStationPickerData={this.props.requestStationPickerData}
-        {...this.props}
+        id={this.props.id}
+        setFieldValue={this.props.setFieldValue}
       />
     );
   }
 }
 // keeps container tests consistent to be written as class
-
-StationPickerContainer.propTypes = {
-  stationPicker: PropTypes.shape({
-    data: PropTypes.shape(),
-    error: PropTypes.string,
-    isFetching: PropTypes.bool
-  }).isRequired,
-  requestStationPickerData: PropTypes.func.isRequired
-};
 
 const config = {
   props: ['stationPicker'],

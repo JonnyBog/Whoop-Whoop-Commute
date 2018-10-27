@@ -22,7 +22,9 @@ describe('Features', () => {
           isFetching: false
         },
         requestStationPickerData: jest.fn(),
-        resetStationPickerRequest: jest.fn()
+        setFieldValue: jest.fn(),
+        id: 'test',
+        error: ''
       };
     });
 

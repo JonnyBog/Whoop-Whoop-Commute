@@ -9,6 +9,19 @@ import CommuteForm from 'features/commute-form/commute-form';
 // eslint-disable-next-line react/prefer-stateless-function
 class CommuteFormContainer extends Component {
   /**
+   * propTypes
+   * @type {Object}
+   */
+  static propTypes = {
+    commuteForm: PropTypes.shape({
+      data: PropTypes.arrayOf(PropTypes.shape()),
+      error: PropTypes.string,
+      isFetching: PropTypes.bool
+    }).isRequired,
+    requestCommuteFormData: PropTypes.func.isRequired
+  };
+
+  /**
    * react render
    * @returns {JSX} - JSX
    */
@@ -24,15 +37,6 @@ class CommuteFormContainer extends Component {
   }
 }
 // keeps container tests consistent to be written as class
-
-CommuteFormContainer.propTypes = {
-  commuteForm: PropTypes.shape({
-    data: PropTypes.arrayOf(PropTypes.shape()),
-    error: PropTypes.string,
-    isFetching: PropTypes.bool
-  }).isRequired,
-  requestCommuteFormData: PropTypes.func.isRequired
-};
 
 const config = {
   props: ['commuteForm'],

@@ -17,14 +17,7 @@ describe('Features', () => {
         requestCommuteFormData: jest.fn(),
         data: [],
         isFetching: false,
-        error: '',
-        values: [],
-        errors: [],
-        handleChange: jest.fn(),
-        handleSubmit: jest.fn(),
-        setFieldValue: jest.fn(),
-        submitCount: jest.fn(),
-        touched: []
+        error: ''
       };
     });
 

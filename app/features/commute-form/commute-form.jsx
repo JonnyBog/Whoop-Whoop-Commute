@@ -49,6 +49,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         }}
       >
         {props => {
+          /* eslint react/prop-types: 0 */
           const {
             values,
             errors,
@@ -82,7 +83,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                     id="workStation"
                     value={values.workStation}
                     setFieldValue={setFieldValue}
-                    error={submitCount > 0 && errors.workStation}
+                    error={submitCount > 0 ? errors.workStation : ''}
                   />
                 </GridItem>
                 <GridItem
@@ -113,7 +114,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                 </GridItem>
                 <CommuteFormSubmit
                   isFetching={isFetching}
-                  error={errors.workStation && touched.workStation}
+                  error={errors.workStation ? touched.workStation : ''}
                 >
                   {
                     !isFetching
@@ -144,23 +145,10 @@ CommuteForm.propTypes = {
   requestCommuteFormData: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape()),
   isFetching: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  values: PropTypes.arrayOf(PropTypes.string),
-  errors: PropTypes.arrayOf(PropTypes.string),
-  handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  setFieldValue: PropTypes.func,
-  submitCount: PropTypes.func,
-  touched: PropTypes.arrayOf(PropTypes.shape()).isRequired
+  error: PropTypes.string
 };
 
 CommuteForm.defaultProps = {
   data: {},
-  error: '',
-  values: [],
-  errors: [],
-  handleChange: () => {},
-  handleSubmit: () => {},
-  setFieldValue: () => {},
-  submitCount: () => {}
+  error: ''
 };

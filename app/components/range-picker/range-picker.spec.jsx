@@ -16,7 +16,7 @@ describe('Components', () => {
         max: 5,
         label: 'test',
         id: 'test',
-        value: 'test',
+        value: 1,
         onChange: jest.fn()
       };
     });

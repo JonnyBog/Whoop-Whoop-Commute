@@ -17,14 +17,14 @@ describe('Features', () => {
         data: {
           matches: []
         },
-        error: null
+        error: ''
       };
       expect(stationPickerReducer(undefined, { type: undefined })).toEqual(defaultState);
     });
 
     it('should handle STATION_PICKER_REQUEST', () => {
       const result = stationPickerReducer({}, { type: STATION_PICKER_REQUEST });
-      expect(result).toEqual({ isFetching: true, data: { matches: [] }, error: null });
+      expect(result).toEqual({ isFetching: true, data: { matches: [] }, error: '' });
     });
 
     it('should handle STATION_PICKER_SUCCESS', () => {

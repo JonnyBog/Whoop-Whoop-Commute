@@ -13,8 +13,14 @@ export default class LocationPicker extends Component {
    */
   static propTypes = {
     value: PropTypes.shape({
-      lat: PropTypes.number,
-      lng: PropTypes.number
+      lat: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]),
+      lng: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ])
     }).isRequired,
     radius: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired

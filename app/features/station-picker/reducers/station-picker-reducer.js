@@ -9,7 +9,7 @@ const defaultState = {
   data: {
     matches: []
   },
-  error: null
+  error: ''
 };
 
 /**
@@ -26,7 +26,7 @@ export default function (state = defaultState, action) {
         data: {
           matches: []
         },
-        error: null
+        error: ''
       });
     case STATION_PICKER_SUCCESS:
       return Object.assign({}, state, {

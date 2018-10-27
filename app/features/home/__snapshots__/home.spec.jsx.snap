@@ -1,26 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Features Home component should return content 1`] = `
-<home__HomeContainer>
-  <GridItem
-    py={
+<React.Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Whoop Whoop Commute - Home
+    </title>
+  </HelmetWrapper>
+  <GridContainer
+    mb={
       Array [
-        "6px",
-        "8px",
-        "12px",
-      ]
-    }
-    width={
-      Array [
-        1,
-        1,
-        1,
+        20,
+        30,
+        55,
       ]
     }
   >
-    <div>
-      test
-    </div>
-  </GridItem>
-</home__HomeContainer>
+    <GridItem
+      width={
+        Array [
+          1,
+          1,
+          1,
+        ]
+      }
+    >
+      <GridItem
+        mb={
+          Array [
+            20,
+            30,
+            55,
+          ]
+        }
+        px={
+          Array [
+            0,
+            0,
+            0,
+          ]
+        }
+        width={
+          Array [
+            1,
+            1,
+            0.5,
+          ]
+        }
+      >
+        <HomeForecast
+          forecastSummary="test"
+        />
+      </GridItem>
+      <Connect(CommuteFormContainer) />
+    </GridItem>
+  </GridContainer>
+</React.Fragment>
 `;

@@ -5,9 +5,15 @@ import {
   typography
 } from 'base-styles';
 
-const CommuteFormIntroCopy = styled.p`
+const CommuteFormIntroCopy = styled.ul`
   ${typography.copy}
   width: 100%;
+
+  li {
+    list-style-type: decimal;
+    list-style-position: inside;
+    margin-bottom: 5px;
+  }
 `;
 
 /**
@@ -17,7 +23,9 @@ const CommuteFormIntroCopy = styled.p`
 export default function CommuteFormIntro () {
   return (
     <CommuteFormIntroCopy>
-      Pick a work station and an area to travel from on the map - then see the different commutes from that area!
+      <li>Pick your work station from the dropdown</li>
+      <li>Choose the area where you wish to live on the map</li>
+      <li>Hit submit and see the different areas you can live with commute times</li>
     </CommuteFormIntroCopy>
   );
 }

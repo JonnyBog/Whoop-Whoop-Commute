@@ -7,7 +7,7 @@ import {
 const defaultState = {
   isFetching: false,
   data: null,
-  error: null
+  error: ''
 };
 
 /**
@@ -22,7 +22,7 @@ export default function (state = defaultState, action) {
       return Object.assign({}, state, {
         isFetching: true,
         data: null,
-        error: null
+        error: ''
       });
     case COMMUTE_FORM_SUCCESS:
       return Object.assign({}, state, {

@@ -22,8 +22,8 @@ export default class StationPicker extends Component {
         })
       )
     }),
-    id: PropTypes.string,
-    setFieldValue: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    setFieldValue: PropTypes.func,
     requestStationPickerData: PropTypes.func.isRequired,
     error: PropTypes.string
   };
@@ -35,7 +35,7 @@ export default class StationPicker extends Component {
   static defaultProps = {
     data: null,
     error: '',
-    id: 'station-picker'
+    setFieldValue: () => {}
   }
 
   /**

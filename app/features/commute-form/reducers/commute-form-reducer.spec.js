@@ -15,14 +15,14 @@ describe('Features', () => {
       const defaultState = {
         isFetching: false,
         data: null,
-        error: null
+        error: ''
       };
       expect(commuteFormReducer(undefined, { type: undefined })).toEqual(defaultState);
     });
 
     it('should handle COMMUTE_FORM_REQUEST', () => {
       const result = commuteFormReducer({}, { type: COMMUTE_FORM_REQUEST });
-      expect(result).toEqual({ isFetching: true, data: null, error: null });
+      expect(result).toEqual({ isFetching: true, data: null, error: '' });
     });
 
     it('should handle COMMUTE_FORM_SUCCESS', () => {
