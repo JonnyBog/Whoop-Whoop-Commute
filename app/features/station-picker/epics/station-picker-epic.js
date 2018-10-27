@@ -29,12 +29,10 @@ export default function fetchStationPickerData (action$, store, { apiHelper }) {
           const matches =
             response.data.matches
               .filter(match => match.icsId)
-              .map(match => {
-                return {
-                  value: match.icsId,
-                  label: match.name
-                };
-              });
+              .map(match => ({
+                value: match.icsId,
+                label: match.name
+              }));
 
           return receiveStationPickerData({
             data: {
@@ -42,6 +40,6 @@ export default function fetchStationPickerData (action$, store, { apiHelper }) {
             }
           });
         })
-        .catch(error => Observable.of(failedStationPickerRequest(error)))
+        .catch(error => Observable.of(failedStationPickerRequest(error)));
     });
 }

@@ -9,13 +9,26 @@ describe('Components', () => {
       expect(FormError).toBeDefined();
     });
 
+    let props;
+
+    beforeEach(() => {
+      props = {
+        children: 'test'
+      };
+    });
+
+    afterEach(() => {
+      props = null;
+    });
+
     /**
      * createRenderTree
+     * @param   {Object} updatedProps - defaults to props
      * @returns {JSX} component tree
      */
-    function createRenderTree () {
+    function createRenderTree (updatedProps = props) {
       return renderer.create(
-        <FormError />
+        <FormError {...updatedProps} />
       ).toJSON();
     }
 

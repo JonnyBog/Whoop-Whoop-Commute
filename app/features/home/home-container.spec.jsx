@@ -22,12 +22,7 @@ describe('Features', () => {
           isFetching: false
         },
         requestHomeData: jest.fn(),
-        resetHomeRequest: jest.fn(),
-        match: {
-          params: {
-            slug: 'test'
-          }
-        }
+        resetHomeRequest: jest.fn()
       };
     });
 
@@ -65,8 +60,7 @@ describe('Features', () => {
         {
           home: {
             data: {
-              title: 'test',
-              slug: 'test'
+              test: 'test'
             }
           }
         }
@@ -88,8 +82,7 @@ describe('Features', () => {
           home: {
             isFetching: true,
             data: {
-              title: 'test',
-              slug: 'test'
+              test: 'test'
             }
           }
         }
@@ -106,8 +99,7 @@ describe('Features', () => {
         {
           home: {
             data: {
-              title: 'test',
-              slug: 'test'
+              test: 'test'
             }
           }
         }
@@ -116,8 +108,7 @@ describe('Features', () => {
       const wrapper = createShallowWrapper(updatedProps);
       expect(wrapper.prop('loaded')().props).toEqual({
         data: {
-          title: 'test',
-          slug: 'test'
+          test: 'test'
         }
       });
     });

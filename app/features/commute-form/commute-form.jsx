@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -14,9 +13,9 @@ import { StationPicker } from 'features';
 import RangePicker from 'components/range-picker/range-picker';
 import LocationPicker from 'components/location-picker/location-picker';
 import FormError from 'components/form-error/form-error';
-import CommuteFormIntro from './components/commute-form-intro/commute-form-intro';
-import CommuteFormSubmit from './components/commute-form-submit/commute-form-submit';
-import CommuteFormResults from './components/commute-form-results/commute-form-results';
+import CommuteFormIntro from 'features/commute-form/components/commute-form-intro/commute-form-intro';
+import CommuteFormSubmit from 'features/commute-form/components/commute-form-submit/commute-form-submit';
+import CommuteFormResults from 'features/commute-form/components/commute-form-results/commute-form-results';
 
 const halfMileInMeters = 804.67;
 
@@ -50,6 +49,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
         }}
       >
         {props => {
+          /* eslint react/prop-types: 0 */
           const {
             values,
             errors,
@@ -83,7 +83,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                     id="workStation"
                     value={values.workStation}
                     setFieldValue={setFieldValue}
-                    error={submitCount > 0 && errors.workStation}
+                    error={submitCount > 0 ? errors.workStation : ''}
                   />
                 </GridItem>
                 <GridItem
@@ -114,7 +114,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                 </GridItem>
                 <CommuteFormSubmit
                   isFetching={isFetching}
-                  error={errors.workStation && touched.workStation}
+                  error={errors.workStation ? touched.workStation : ''}
                 >
                   {
                     !isFetching
@@ -144,6 +144,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
 CommuteForm.propTypes = {
   requestCommuteFormData: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape()),
+  isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string
 };
 

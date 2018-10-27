@@ -14,14 +14,15 @@ describe('Features', () => {
     it('should return the default state', () => {
       const defaultState = {
         isFetching: false,
-        data: null
+        data: null,
+        error: null
       };
       expect(homeReducer(undefined, { type: undefined })).toEqual(defaultState);
     });
 
     it('should handle HOME_PAGE_REQUEST', () => {
       const result = homeReducer({}, { type: HOME_PAGE_REQUEST });
-      expect(result).toEqual({ isFetching: true });
+      expect(result).toEqual({ isFetching: true, data: null, error: null });
     });
 
     it('should handle HOME_PAGE_SUCCESS', () => {

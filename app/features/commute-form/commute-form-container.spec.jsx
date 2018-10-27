@@ -2,32 +2,26 @@ import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 
-import ConnectedHomeContainer from 'features/home/home-container';
+import ConnectedCommuteFormContainer from 'features/commute-form/commute-form-container';
 
 describe('Features', () => {
-  describe('Home Container', () => {
+  describe('Commute Form Container', () => {
     it('should export a Connected Component', () => {
-      expect(ConnectedHomeContainer).toBeDefined();
+      expect(ConnectedCommuteFormContainer).toBeDefined();
     });
 
-    const HomeContainer = ConnectedHomeContainer.WrappedComponent;
+    const CommuteFormContainer = ConnectedCommuteFormContainer.WrappedComponent;
     const mockStore = configureMockStore();
     const store = mockStore({});
     let props;
 
     beforeEach(() => {
       props = {
-        home: {
+        commuteForm: {
           data: null,
           isFetching: false
         },
-        requestHomeData: jest.fn(),
-        resetHomeRequest: jest.fn(),
-        match: {
-          params: {
-            slug: 'test'
-          }
-        }
+        requestCommuteFormData: jest.fn()
       };
     });
 
@@ -42,7 +36,7 @@ describe('Features', () => {
      */
     function createShallowWrapper (updatedProps = props) {
       return shallow(
-        <HomeContainer {...updatedProps} store={store} />
+        <CommuteFormContainer {...updatedProps} store={store} />
       );
     }
 
@@ -51,75 +45,20 @@ describe('Features', () => {
       expect(wrapper.instance().props).toEqual({ ...props, store });
     });
 
-    it('should dispatch request data action when fireInitialActions is called', () => {
-      const wrapper = new HomeContainer();
-      wrapper.constructor.fireInitialActions(store);
-      const actions = store.getActions();
-      expect(actions[0].type).toEqual('HOME_PAGE_REQUEST');
-    });
-
-    it('should not fetch data if there is data already', () => {
-      const updatedProps = Object.assign(
-        {},
-        props,
-        {
-          home: {
-            data: {
-              title: 'test',
-              slug: 'test'
-            }
-          }
-        }
-      );
-      const wrapper = createShallowWrapper(updatedProps);
-      expect(wrapper.instance().props.requestHomeData).not.toHaveBeenCalled();
-    });
-
-    it('should fetch the data if there is no data already', () => {
-      const wrapper = createShallowWrapper();
-      expect(wrapper.instance().props.requestHomeData).toHaveBeenCalled();
-    });
-
     it('should update the props and store', () => {
       const updatedProps = Object.assign(
         {},
         props,
         {
-          home: {
+          commuteForm: {
             isFetching: true,
-            data: {
-              title: 'test',
-              slug: 'test'
-            }
+            data: [{ test: 'test' }]
           }
         }
       );
 
       const wrapper = createShallowWrapper(updatedProps);
       expect(wrapper.instance().props).toEqual({ ...updatedProps, store });
-    });
-
-    it('should return a component from the render prop with the correct props', () => {
-      const updatedProps = Object.assign(
-        {},
-        props,
-        {
-          home: {
-            data: {
-              title: 'test',
-              slug: 'test'
-            }
-          }
-        }
-      );
-
-      const wrapper = createShallowWrapper(updatedProps);
-      expect(wrapper.prop('loaded')().props).toEqual({
-        data: {
-          title: 'test',
-          slug: 'test'
-        }
-      });
     });
   });
 });

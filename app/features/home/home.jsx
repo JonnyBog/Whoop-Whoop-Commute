@@ -9,7 +9,7 @@ import {
 } from 'base-styles';
 
 import { CommuteForm } from 'features';
-import HomeForecast from './components/home-forecast/home-forecast';
+import HomeForecast from 'features/home/components/home-forecast/home-forecast';
 
 /**
  * Home

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {
@@ -46,14 +47,14 @@ const FetchingMessage = styled.p`
 `;
 
 /**
- * Renders CommuteFormResults component
+ * Renders CommuteFormSubmit component
  * @param {Object} props - react props
  * @returns {JSX} react jsx
  */
 export default function CommuteFormSubmit ({ isFetching, error, children }) {
   return (
     <Fragment>
-      <Submit disabled={isFetching} type="submit" error={error}>
+      <Submit disabled={isFetching || error} type="submit" error={error}>
         {children}
       </Submit>
       {
@@ -65,3 +66,13 @@ export default function CommuteFormSubmit ({ isFetching, error, children }) {
     </Fragment>
   );
 }
+
+CommuteFormSubmit.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  children: PropTypes.string.isRequired
+};
+
+CommuteFormSubmit.defaultProps = {
+  error: ''
+};

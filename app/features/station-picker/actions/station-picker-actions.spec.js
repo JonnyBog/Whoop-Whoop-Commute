@@ -1,58 +1,51 @@
 import configureMockStore from 'redux-mock-store';
 
 import {
-  requestHomeData,
-  receiveHomeData,
-  failedHomeRequest
-} from 'features/home/actions/home-actions';
-import fixture from 'features/home/actions/home-actions.fixture';
+  requestStationPickerData,
+  receiveStationPickerData,
+  failedStationPickerRequest
+} from 'features/station-picker/actions/station-picker-actions';
+import fixture from 'features/station-picker/actions/station-picker-actions.fixture';
 
 describe('Features', () => {
-  describe('Home Actions', () => {
+  describe('Station Picker Actions', () => {
     const mockStore = configureMockStore();
 
-    describe('HOME_PAGE_REQUEST', () => {
-      it('should dispatch the HOME_PAGE_REQUEST action', () => {
+    describe('STATION_PICKER_REQUEST', () => {
+      it('should dispatch the STATION_PICKER_REQUEST action', () => {
         const store = mockStore({});
 
-        store.dispatch(requestHomeData());
+        store.dispatch(requestStationPickerData());
         expect(store.getActions())
           .toEqual(expect.arrayContaining([{
-            type: 'HOME_PAGE_REQUEST',
-            meta:
-              {
-                lifecycle: {
-                  reject: 'HOME_PAGE_FAILURE',
-                  resolve: 'HOME_PAGE_SUCCESS'
-                }
-              }
+            type: 'STATION_PICKER_REQUEST'
           }]));
       });
     });
 
-    describe('HOME_PAGE_SUCCESS', () => {
-      it('should dispatch the HOME_PAGE_SUCCESS action', () => {
+    describe('STATION_PICKER_SUCCESS', () => {
+      it('should dispatch the STATION_PICKER_SUCCESS action', () => {
         const store = mockStore({});
 
-        store.dispatch(receiveHomeData(fixture.response));
+        store.dispatch(receiveStationPickerData(fixture.response));
         expect(store.getActions())
           .toEqual(expect.arrayContaining([{
-            type: 'HOME_PAGE_SUCCESS',
+            type: 'STATION_PICKER_SUCCESS',
             response: fixture.response
           }]));
       });
     });
 
-    describe('HOME_PAGE_FAILURE', () => {
-      it('should dispatch the HOME_PAGE_FAILURE action', () => {
+    describe('STATION_PICKER_FAILURE', () => {
+      it('should dispatch the STATION_PICKER_FAILURE action', () => {
         const store = mockStore({});
 
-        store.dispatch(failedHomeRequest({
+        store.dispatch(failedStationPickerRequest({
           statusText: 'Something went wrong'
         }));
         expect(store.getActions())
           .toEqual(expect.arrayContaining([{
-            type: 'HOME_PAGE_FAILURE',
+            type: 'STATION_PICKER_FAILURE',
             response: {
               statusText: 'Something went wrong'
             }

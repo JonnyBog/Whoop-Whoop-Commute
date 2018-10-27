@@ -3,5 +3,7 @@
 exports[`Components FormError Appearance should render 1`] = `
 <p
   className="form-error__StyledFormError-mbqx9k-0 cKaLxn"
-/>
+>
+  test
+</p>
 `;

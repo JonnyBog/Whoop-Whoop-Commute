@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { breakpointAll } from 'base-styles';
 
-import Root from 'features/root/root';
+import { Root } from 'features';
 
 /**
  * ServerMarkup

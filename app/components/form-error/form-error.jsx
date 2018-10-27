@@ -25,5 +25,5 @@ export default function FormError ({ children }) {
 }
 
 FormError.propTypes = {
-  children: PropTypes.shape().isRequired
+  children: PropTypes.string.isRequired
 };

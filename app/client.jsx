@@ -8,7 +8,7 @@ import { breakpointAll } from 'base-styles';
 import { HelmetProvider, createHelmetStore } from 'react-safety-helmet';
 
 import configureStore from 'store';
-import RootContainer from 'features/root/root-container';
+import { Root } from 'features';
 
 const store = configureStore(window.__initialData__); // eslint-disable-line no-underscore-dangle
 const helmetStore = createHelmetStore();
@@ -23,7 +23,7 @@ loadComponents().then(() => {
       >
         <Provider store={store}>
           <BrowserRouter>
-            <RootContainer />
+            <Root />
           </BrowserRouter>
         </Provider>
       </ThemeProvider>

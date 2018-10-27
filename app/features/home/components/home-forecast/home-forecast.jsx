@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import {
   typography,
@@ -46,3 +47,7 @@ export default function HomeForecast ({ forecastSummary }) {
     </WeatherContainer>
   );
 }
+
+HomeForecast.propTypes = {
+  forecastSummary: PropTypes.string.isRequired
+};

@@ -33,6 +33,6 @@ RangePicker.propTypes = {
   max: Proptypes.number.isRequired,
   label: Proptypes.string.isRequired,
   id: Proptypes.string.isRequired,
-  value: Proptypes.string.isRequired,
+  value: Proptypes.number.isRequired,
   onChange: Proptypes.func.isRequired
 };

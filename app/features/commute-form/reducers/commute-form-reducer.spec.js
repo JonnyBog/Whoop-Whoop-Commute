@@ -1,45 +1,46 @@
 import {
-  HOME_PAGE_REQUEST,
-  HOME_PAGE_SUCCESS,
-  HOME_PAGE_FAILURE
-} from 'features/home/actions/home-actions';
-import homeReducer from 'features/home/reducers/home-reducer';
+  COMMUTE_FORM_REQUEST,
+  COMMUTE_FORM_SUCCESS,
+  COMMUTE_FORM_FAILURE
+} from 'features/commute-form/actions/commute-form-actions';
+import commuteFormReducer from 'features/commute-form/reducers/commute-form-reducer';
 
 describe('Features', () => {
-  describe('Home Reducer', () => {
+  describe('Commute Form Reducer', () => {
     it('should export', () => {
-      expect(homeReducer).toBeDefined();
+      expect(commuteFormReducer).toBeDefined();
     });
 
     it('should return the default state', () => {
       const defaultState = {
         isFetching: false,
-        data: null
+        data: null,
+        error: ''
       };
-      expect(homeReducer(undefined, { type: undefined })).toEqual(defaultState);
+      expect(commuteFormReducer(undefined, { type: undefined })).toEqual(defaultState);
     });
 
-    it('should handle HOME_PAGE_REQUEST', () => {
-      const result = homeReducer({}, { type: HOME_PAGE_REQUEST });
-      expect(result).toEqual({ isFetching: true });
+    it('should handle COMMUTE_FORM_REQUEST', () => {
+      const result = commuteFormReducer({}, { type: COMMUTE_FORM_REQUEST });
+      expect(result).toEqual({ isFetching: true, data: null, error: '' });
     });
 
-    it('should handle HOME_PAGE_SUCCESS', () => {
+    it('should handle COMMUTE_FORM_SUCCESS', () => {
       const response = {
         data: {
           title: 'test'
         }
       };
-      const result = homeReducer({}, { type: HOME_PAGE_SUCCESS, response });
-      expect(result).toEqual({ isFetching: false, data: response.data });
+      const result = commuteFormReducer({}, { type: COMMUTE_FORM_SUCCESS, response });
+      expect(result).toEqual({ isFetching: false, data: response });
     });
 
-    it('should handle HOME_PAGE_FAILURE', () => {
+    it('should handle COMMUTE_FORM_FAILURE', () => {
       const response = {
         statusText: 'error'
       };
-      const result = homeReducer({}, { type: HOME_PAGE_FAILURE, response });
-      expect(result).toEqual({ isFetching: false, error: response.statusText });
+      const result = commuteFormReducer({}, { type: COMMUTE_FORM_FAILURE, response });
+      expect(result).toEqual({ isFetching: false, error: response });
     });
   });
 });

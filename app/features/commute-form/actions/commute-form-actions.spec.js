@@ -19,8 +19,8 @@ describe('Features', () => {
           requestCommuteFormData({
             workStation: 'test',
             halfMileRadius: 3,
-            lat: 50,
-            lng: 50
+            lat: '50',
+            lng: '50'
           })
         );
         expect(store.getActions())
@@ -28,8 +28,8 @@ describe('Features', () => {
             type: 'COMMUTE_FORM_REQUEST',
             workStation: 'test',
             halfMileRadius: 3,
-            lat: 50,
-            lng: 50
+            lat: '50',
+            lng: '50'
           }]));
       });
     });

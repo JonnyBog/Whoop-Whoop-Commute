@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components Home Forecast Appearance should render 1`] = `
+<div
+  className="home-forecast__WeatherContainer-oz1efb-0 iHXbQ"
+>
+  <h2
+    className="home-forecast__WeatherTitle-oz1efb-1 lnbJny"
+  >
+    Today's forecast:
+  </h2>
+  <p
+    className="home-forecast__WeatherForecast-oz1efb-2 dZidty"
+  >
+    test
+  </p>
+</div>
+`;

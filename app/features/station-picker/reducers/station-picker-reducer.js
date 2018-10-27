@@ -8,7 +8,8 @@ const defaultState = {
   isFetching: false,
   data: {
     matches: []
-  }
+  },
+  error: ''
 };
 
 /**
@@ -21,7 +22,11 @@ export default function (state = defaultState, action) {
   switch (action.type) {
     case STATION_PICKER_REQUEST:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
+        data: {
+          matches: []
+        },
+        error: ''
       });
     case STATION_PICKER_SUCCESS:
       return Object.assign({}, state, {
@@ -31,10 +36,7 @@ export default function (state = defaultState, action) {
     case STATION_PICKER_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        error: action.response.message,
-        data: {
-          matches: []
-        }
+        error: action.response.message
       });
     default:
       return state;

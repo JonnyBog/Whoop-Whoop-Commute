@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Features Commute Form Results Component Appearance should render 1`] = `
+<div
+  className="commute-form-results__ResultWrapper-sc-1jiponl-1 hvWEVL"
+>
+  <h2
+    className="commute-form-results__ResultTitle-sc-1jiponl-2 dJVOAy"
+  >
+    test name
+  </h2>
+  <p
+    className="commute-form-results__ResultsCopy-sc-1jiponl-0 kRINpC"
+  >
+    10
+     
+    minutes
+  </p>
+  <p
+    className="commute-form-results__JourneyCopy-sc-1jiponl-3 efvvJE"
+  >
+    test summary
+  </p>
+</div>
+`;

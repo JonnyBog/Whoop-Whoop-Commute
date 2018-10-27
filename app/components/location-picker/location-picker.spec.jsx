@@ -15,8 +15,8 @@ describe('Components', () => {
     beforeEach(() => {
       props = {
         value: {
-          lat: 20,
-          lng: 20
+          lat: '20',
+          lng: '20'
         },
         radius: 20,
         onChange: jest.fn()
@@ -67,13 +67,13 @@ describe('Components', () => {
         };
         wrapper.instance().handleChange({
           position: {
-            lat: 50,
-            lng: 50
+            lat: '50',
+            lng: '50'
           }
         });
         expect(wrapper.state().position).toEqual({
-          lat: 50,
-          lng: 50
+          lat: '50',
+          lng: '50'
         });
       });
     });

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Features Commute Form Submit Component Appearance should render 1`] = `
+<button
+  className="commute-form-submit__Submit-ci59mw-0 eJkQdd"
+  disabled="test error"
+  type="submit"
+>
+  submit
+</button>
+`;

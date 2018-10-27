@@ -1,36 +1,84 @@
 import { ActionsObservable } from 'redux-observable';
 
 import {
-  HOME_PAGE_REQUEST,
-  HOME_PAGE_SUCCESS,
-  HOME_PAGE_FAILURE
-} from 'features/home/actions/home-actions';
-import fetchHomeData from 'features/home/epics/home-epic';
+  STATION_PICKER_REQUEST,
+  STATION_PICKER_SUCCESS,
+  STATION_PICKER_FAILURE
+} from 'features/station-picker/actions/station-picker-actions';
+import fetchStationPickerData from 'features/station-picker/epics/station-picker-epic';
 
 describe('Features', () => {
-  describe('Home epic', () => {
+  describe('Station picker epic', () => {
     const action$ = ActionsObservable.of(
       {
-        type: HOME_PAGE_REQUEST
+        type: STATION_PICKER_REQUEST,
+        targetValue: 'test'
       }
     );
 
-    it('dispatches success action when successful', () => {
+    it('dispatches success action when successful and removes matches without icsId', () => {
       const dependencies = {
         apiHelper: {
-          get: jest.fn(() => new Promise(resolve => resolve({ test: 'test' })))
+          get: jest.fn(() => new Promise(resolve => resolve({
+            data: {
+              matches: [
+                {
+                  icsId: 'test ics',
+                  name: 'test name'
+                },
+                {
+                  name: 'test name 2'
+                }
+              ]
+            }
+          })))
         }
       };
       const expectedOutputActions = [
         {
-          type: HOME_PAGE_SUCCESS,
+          type: STATION_PICKER_SUCCESS,
           data: {
-            test: 'test'
+            matches: [
+              {
+                value: 'test ics',
+                label: 'test name'
+              }
+            ]
           }
         }
       ];
 
-      fetchHomeData(action$, {}, dependencies)
+      fetchStationPickerData(action$, {}, dependencies)
+        .toArray()
+        .subscribe(actualOutputActions => {
+          expect(actualOutputActions).toEqual(expectedOutputActions);
+        });
+    });
+
+    it('dispatches specific failed action when there is no target action', () => {
+      const noTargetAction$ = ActionsObservable.of(
+        {
+          type: STATION_PICKER_REQUEST
+        }
+      );
+
+      const dependencies = {
+        apiHelper: {
+          get: jest.fn(() =>
+            new Promise((resolve, reject) =>
+              reject(new Error())
+            )
+          )
+        }
+      };
+      const expectedOutputActions = [
+        {
+          type: STATION_PICKER_FAILURE,
+          response: 'Nothing inputted'
+        }
+      ];
+
+      fetchStationPickerData(noTargetAction$, {}, dependencies)
         .toArray()
         .subscribe(actualOutputActions => {
           expect(actualOutputActions).toEqual(expectedOutputActions);
@@ -51,12 +99,12 @@ describe('Features', () => {
       };
       const expectedOutputActions = [
         {
-          type: HOME_PAGE_FAILURE,
+          type: STATION_PICKER_FAILURE,
           error: 'error'
         }
       ];
 
-      fetchHomeData(action$, {}, dependencies)
+      fetchStationPickerData(action$, {}, dependencies)
         .toArray()
         .subscribe(actualOutputActions => {
           expect(actualOutputActions).toEqual(expectedOutputActions);

@@ -1,65 +1,121 @@
 import { ActionsObservable } from 'redux-observable';
 
 import {
-  HOME_PAGE_REQUEST,
-  HOME_PAGE_SUCCESS,
-  HOME_PAGE_FAILURE
-} from 'features/home/actions/home-actions';
-import fetchHomeData from 'features/home/epics/home-epic';
+  COMMUTE_FORM_REQUEST,
+  COMMUTE_FORM_FAILURE
+} from 'features/commute-form/actions/commute-form-actions';
+import fetchCommuteFormData from 'features/commute-form/epics/commute-form-epic';
+import * as journeyEpic from 'features/commute-form/epics/journey-epic';
 
 describe('Features', () => {
-  describe('Home epic', () => {
+  describe('Commute Form epic', () => {
     const action$ = ActionsObservable.of(
       {
-        type: HOME_PAGE_REQUEST
+        type: COMMUTE_FORM_REQUEST,
+        workStation: 'test'
       }
     );
 
-    it('dispatches success action when successful', () => {
+    beforeEach(() => {
+      journeyEpic.fetchJourneyData = jest.fn();
+    });
+
+    it('dispatches success action when successful', done => {
       const dependencies = {
         apiHelper: {
-          get: jest.fn(() => new Promise(resolve => resolve({ test: 'test' })))
+          get: jest.fn(() => new Promise(resolve => resolve({
+            data: {
+              stopPoints: [
+                {
+                  icsCode: 'test isc',
+                  commonName: 'test name'
+                }
+              ]
+            }
+          })))
+        }
+      };
+
+      fetchCommuteFormData(action$, {}, dependencies)
+        .toArray()
+        .subscribe(() => {
+          expect(journeyEpic.fetchJourneyData).toHaveBeenCalled();
+          done();
+        });
+    });
+
+    it('dispatches failed with no stations message when there are no stations', done => {
+      const dependencies = {
+        apiHelper: {
+          get: jest.fn(() => new Promise(resolve => resolve({
+            data: {
+              stopPoints: []
+            }
+          })))
         }
       };
       const expectedOutputActions = [
         {
-          type: HOME_PAGE_SUCCESS,
-          data: {
-            test: 'test'
-          }
+          type: COMMUTE_FORM_FAILURE,
+          response: 'There are no stations in this area.'
         }
       ];
 
-      fetchHomeData(action$, {}, dependencies)
+      fetchCommuteFormData(action$, {}, dependencies)
         .toArray()
         .subscribe(actualOutputActions => {
           expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
         });
     });
 
-    it('dispatches failed action when unsuccessful', () => {
+    it('dispatches generic fail if promise is rejected', done => {
       const dependencies = {
         apiHelper: {
           get: jest.fn(() =>
             new Promise((resolve, reject) =>
-              reject(new Error({
-                response: 'error'
-              }))
+              reject(new Error())
             )
           )
         }
       };
       const expectedOutputActions = [
         {
-          type: HOME_PAGE_FAILURE,
-          error: 'error'
+          type: COMMUTE_FORM_FAILURE,
+          response: 'Oops, something has gone wrong. There might be an issue with a station in this area.'
         }
       ];
 
-      fetchHomeData(action$, {}, dependencies)
+      fetchCommuteFormData(action$, {}, dependencies)
         .toArray()
         .subscribe(actualOutputActions => {
           expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
+        });
+    });
+
+    it('dispatches too many stations fail if promise is rejected with specific error', done => {
+      const dependencies = {
+        apiHelper: {
+          get: jest.fn(() =>
+            new Promise((resolve, reject) =>
+              reject(new Error('Network Error'))
+            )
+          )
+        }
+      };
+      const expectedOutputActions = [
+        {
+          type: COMMUTE_FORM_FAILURE,
+          response: 'There must be too many stations in this area!'
+        }
+      ];
+
+      fetchCommuteFormData(action$, {}, dependencies)
+        .toArray()
+        .subscribe(actualOutputActions => {
+          expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
         });
     });
   });
