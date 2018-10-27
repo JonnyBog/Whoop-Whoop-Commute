@@ -10,16 +10,48 @@ import FormError from 'components/form-error/form-error';
  */
 export default class StationPicker extends Component {
   /**
-   * constructor
+   * propTypes
+   * @type {Object}
    */
-  constructor () {
-    super();
+  static propTypes = {
+    data: PropTypes.shape({
+      matches: PropTypes.arrayOf(
+        PropTypes.shape({
+          value: PropTypes.string,
+          label: PropTypes.string
+        })
+      )
+    }),
+    id: PropTypes.string,
+    setFieldValue: PropTypes.func.isRequired,
+    requestStationPickerData: PropTypes.func.isRequired,
+    error: PropTypes.string
+  };
+
+  /**
+   * defaultProps
+   * @type {Object}
+   */
+  static defaultProps = {
+    data: null,
+    error: '',
+    id: 'station-picker'
   }
 
+  /**
+   * handleChange - handles select change
+   * @param {Object} input - element
+   * @return {Void} - void
+   */
   handleChange (input) {
     this.props.setFieldValue(this.props.id, input.value);
   }
 
+  /**
+   * handleInputChange - handles input change
+   * @param {Object} input - element
+   * @return {Void} - void
+   */
   handleInputChange (input) {
     this.props.requestStationPickerData(input);
   }

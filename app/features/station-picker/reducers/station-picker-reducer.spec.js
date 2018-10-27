@@ -1,45 +1,48 @@
 import {
-  HOME_PAGE_REQUEST,
-  HOME_PAGE_SUCCESS,
-  HOME_PAGE_FAILURE
-} from 'features/home/actions/home-actions';
-import homeReducer from 'features/home/reducers/home-reducer';
+  STATION_PICKER_REQUEST,
+  STATION_PICKER_SUCCESS,
+  STATION_PICKER_FAILURE
+} from 'features/station-picker/actions/station-picker-actions';
+import stationPickerReducer from 'features/station-picker/reducers/station-picker-reducer';
 
 describe('Features', () => {
-  describe('Home Reducer', () => {
+  describe('Station Picker Reducer', () => {
     it('should export', () => {
-      expect(homeReducer).toBeDefined();
+      expect(stationPickerReducer).toBeDefined();
     });
 
     it('should return the default state', () => {
       const defaultState = {
         isFetching: false,
-        data: null
+        data: {
+          matches: []
+        },
+        error: null
       };
-      expect(homeReducer(undefined, { type: undefined })).toEqual(defaultState);
+      expect(stationPickerReducer(undefined, { type: undefined })).toEqual(defaultState);
     });
 
-    it('should handle HOME_PAGE_REQUEST', () => {
-      const result = homeReducer({}, { type: HOME_PAGE_REQUEST });
-      expect(result).toEqual({ isFetching: true });
+    it('should handle STATION_PICKER_REQUEST', () => {
+      const result = stationPickerReducer({}, { type: STATION_PICKER_REQUEST });
+      expect(result).toEqual({ isFetching: true, data: { matches: [] }, error: null });
     });
 
-    it('should handle HOME_PAGE_SUCCESS', () => {
+    it('should handle STATION_PICKER_SUCCESS', () => {
       const response = {
         data: {
           title: 'test'
         }
       };
-      const result = homeReducer({}, { type: HOME_PAGE_SUCCESS, response });
+      const result = stationPickerReducer({}, { type: STATION_PICKER_SUCCESS, response });
       expect(result).toEqual({ isFetching: false, data: response.data });
     });
 
-    it('should handle HOME_PAGE_FAILURE', () => {
+    it('should handle STATION_PICKER_FAILURE', () => {
       const response = {
-        statusText: 'error'
+        message: 'error'
       };
-      const result = homeReducer({}, { type: HOME_PAGE_FAILURE, response });
-      expect(result).toEqual({ isFetching: false, error: response.statusText });
+      const result = stationPickerReducer({}, { type: STATION_PICKER_FAILURE, response });
+      expect(result).toEqual({ isFetching: false, error: response.message });
     });
   });
 });

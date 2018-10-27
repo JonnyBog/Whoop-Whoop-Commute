@@ -36,10 +36,7 @@ export default function (state = defaultState, action) {
     case STATION_PICKER_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        error: action.response.message,
-        data: {
-          matches: []
-        }
+        error: action.response.message
       });
     default:
       return state;

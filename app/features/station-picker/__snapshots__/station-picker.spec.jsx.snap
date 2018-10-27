@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Features Station Picker component should return content 1`] = `
+<React.Fragment>
+  <StateManager
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    id="test id"
+    instanceId="test id"
+    noOptionsMessage={[Function]}
+    onChange={[Function]}
+    onInputChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "test label",
+          "value": "test value",
+        },
+      ]
+    }
+    placeholder="Work station"
+  />
+  <FormError>
+    test error
+  </FormError>
+</React.Fragment>
+`;
