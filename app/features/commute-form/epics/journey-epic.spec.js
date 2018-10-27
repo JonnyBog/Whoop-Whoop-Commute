@@ -37,7 +37,7 @@ describe('Features', () => {
       constants = null;
     });
 
-    it('dispatches success action when successful', done => {
+    it('dispatches success action when successful and only returns first journey', done => {
       const apiHelper = {
         get: jest.fn(() => new Promise(resolve => resolve({
           data: {
@@ -45,6 +45,10 @@ describe('Features', () => {
               {
                 icsCode: 'test ics',
                 commonName: 'test name'
+              },
+              {
+                icsCode: 'test ics 2',
+                commonName: 'test name 2'
               }
             ]
           }
@@ -167,6 +171,28 @@ describe('Features', () => {
         {
           type: COMMUTE_FORM_FAILURE,
           response: 'Please enter a valid station for your work station'
+        }
+      ];
+
+      journeyEpic.fetchJourneyData(journeys, action, apiHelper, constants)
+        .toArray()
+        .subscribe(actualOutputActions => {
+          expect(actualOutputActions).toEqual(expectedOutputActions);
+          done();
+        });
+    });
+
+    it('dispatches failure and has generic message', done => {
+      const apiHelper = {
+        get: jest.fn(() => new Promise((resolve, reject) =>
+          reject(new Error())
+        ))
+      };
+
+      const expectedOutputActions = [
+        {
+          type: COMMUTE_FORM_FAILURE,
+          response: 'Oops, something has gone wrong. There might be an issue with a station in this area.'
         }
       ];
 

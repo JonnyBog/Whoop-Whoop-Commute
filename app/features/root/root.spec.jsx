@@ -1,7 +1,7 @@
 import React from 'react';
 import rendererShallow from 'react-test-renderer/shallow';
 
-import Root from 'features/root/root';
+import { Root } from 'features';
 
 describe('Features', () => {
   describe('Root component', () => {
