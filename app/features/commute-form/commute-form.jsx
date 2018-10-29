@@ -96,7 +96,7 @@ export default function CommuteForm ({ requestCommuteFormData, isFetching, data,
                     value={values.halfMileRadius}
                     onChange={handleChange}
                     max={4}
-                    label="Toggle radius on map"
+                    label="Area radius on map"
                   />
                 </GridItem>
                 <GridItem

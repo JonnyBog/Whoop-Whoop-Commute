@@ -5,13 +5,16 @@ exports[`Features Commute Form Intro Component Appearance should render 1`] = `
   className="commute-form-intro__CommuteFormIntroCopy-n5yvyc-0 cjgizk"
 >
   <li>
-    Pick your work station from the dropdown
+    Pick your work station by typing in the dropdown.
   </li>
   <li>
-    Choose the area where you wish to live on the map
+    Choose the area where you wish to live on the map by moving the red marker.
   </li>
   <li>
-    Hit submit and see the different areas you can live with commute times
+    Change the radius on the map with the radius picker above the map.
+  </li>
+  <li>
+    Hit submit and see the different areas you can live with their commute times.
   </li>
 </ul>
 `;
