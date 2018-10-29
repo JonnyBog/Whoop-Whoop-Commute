@@ -23,9 +23,10 @@ const CommuteFormIntroCopy = styled.ul`
 export default function CommuteFormIntro () {
   return (
     <CommuteFormIntroCopy>
-      <li>Pick your work station from the dropdown</li>
-      <li>Choose the area where you wish to live on the map</li>
-      <li>Hit submit and see the different areas you can live with commute times</li>
+      <li>Pick your work station by typing in the dropdown.</li>
+      <li>Choose the area where you wish to live on the map by moving the red marker.</li>
+      <li>Change the radius on the map with the radius picker above the map.</li>
+      <li>Hit submit and see the different areas you can live with their commute times.</li>
     </CommuteFormIntroCopy>
   );
 }
