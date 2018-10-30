@@ -95,7 +95,7 @@ export default function Header () {
           </TitleCommute>
         </Title>
         <Message>
-          This is a development app. Git repo <a href="https://github.com/JonnyBog/Whoop-Whoop-Commute">here</a>
+          This is a development app. Git repo <a href="https://github.com/JonnyBog/whoop-whoop-commute">here</a>
         </Message>
       </GridItem>
     </GridContainer>
